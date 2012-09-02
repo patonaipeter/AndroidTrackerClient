@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">AndroidTrackerClient</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="main_options">
+        <item>Register</item>
+        <item>Register</item>
+        <!--
+        <item>Google Search</item>
+        <item>HTTP GET</item>
+        <item>HTTP GET with parameters</item>
+        <item>HTTP POST</item>
+    	<item>RSS</item>
+		<item>ATOM</item>
+		<item>Twitter</item>
+		<item>Facebook</item>
+        -->
+    </string-array>
+
+    <string name="title_activity_register">RegisterActivity</string>
+
+</resources>
