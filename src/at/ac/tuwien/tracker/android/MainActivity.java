@@ -46,7 +46,7 @@ public class MainActivity extends ListActivity {
 				startActivity(intent);
 		      	break;
 	      	case 1:
-	      		intent.setClass(this, RegisterActivity.class);
+	      		intent.setClass(this, GpsMainActivity.class);
 				startActivity(intent);
 		      	break;
 //			    intent.setClass(this, HttpGetActivity.class);
