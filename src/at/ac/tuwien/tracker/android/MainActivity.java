@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import at.ac.tuwien.tracker.android.serverConnection.RegisterActivity;
 
 import com.example.androidtrackerclient.R;
 

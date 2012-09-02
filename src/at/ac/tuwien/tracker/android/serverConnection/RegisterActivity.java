@@ -1,4 +1,4 @@
-package at.ac.tuwien.tracker.android;
+package at.ac.tuwien.tracker.android.serverConnection;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;

@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="at.ac.tuwien.tracker.android.RegisterActivity"
+            android:name="at.ac.tuwien.tracker.android.serverConnection.RegisterActivity.RegisterActivity"
             android:label="@string/title_activity_register" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
