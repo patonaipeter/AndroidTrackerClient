@@ -249,6 +249,10 @@
     <string name="autoemail_invalid_form">Invalid values</string>
     <string name="autoemail_invalid_form_message">Please ensure that all of the fields have been filled in properly
     </string>
+    
+     <string name="autoupload_invalid_form">Invalid values</string>
+    <string name="autoupload_invalid_form_message">Please ensure that all of the fields have been filled in properly
+    </string>
 
     <string name="fix_obtained">Fix obtained</string>
     <string name="started_waiting">GPS started, waiting for fix</string>

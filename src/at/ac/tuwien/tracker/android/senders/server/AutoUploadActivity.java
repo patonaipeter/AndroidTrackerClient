@@ -31,24 +31,6 @@ public class AutoUploadActivity extends PreferenceActivity implements
     {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.autouploadsettings);
-
-//        CheckBoxPreference chkEnabled = (CheckBoxPreference) findPreference("autoemail_enabled");
-//
-//        chkEnabled.setOnPreferenceChangeListener(this);
-//
-//        ListPreference lstPresets = (ListPreference) findPreference("autoemail_preset");
-//        lstPresets.setOnPreferenceChangeListener(this);
-//
-//        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
-//        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
-//        txtSmtpServer.setOnPreferenceChangeListener(this);
-//        txtSmtpPort.setOnPreferenceChangeListener(this);
-//
-//        Preference testEmailPref = findPreference("smtp_testemail");
-//
-//        testEmailPref.setOnPreferenceClickListener(this); 
-
-        //
         
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         
@@ -66,19 +48,19 @@ public class AutoUploadActivity extends PreferenceActivity implements
     public boolean onPreferenceClick(Preference preference)
     {
 
-//        if (!IsFormValid())
-//        {
-//            Utilities.MsgBox(getString(R.string.autoemail_invalid_form),
-//                    getString(R.string.autoemail_invalid_form_message),
-//                    AutoUploadActivity.this);
-//            return false;
-//        }
-//
-//    
-//        EditTextPreference username = (EditTextPreference) findPreference("server_username");
-//        EditTextPreference password = (EditTextPreference) findPreference("server_password");
+        if (!IsFormValid())
+        {
+            Utilities.MsgBox(getString(R.string.autoupload_invalid_form),
+                    getString(R.string.autoupload_invalid_form_message),
+                    AutoUploadActivity.this);
+            return false;
+        }
 
+    
+        EditTextPreference username = (EditTextPreference) findPreference("server_username");
+        EditTextPreference password = (EditTextPreference) findPreference("server_password");
 
+//TODO communicate with webserver and check login
 
 //        AutoUploadHelper aeh = new AutoUploadHelper(null);
 //        aeh.SendTestEmail(txtSmtpServer.getText(), txtSmtpPort.getText(),
