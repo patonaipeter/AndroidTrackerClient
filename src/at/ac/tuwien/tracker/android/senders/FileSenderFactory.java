@@ -34,6 +34,7 @@ import at.ac.tuwien.tracker.android.senders.email.AutoEmailHelper;
 import at.ac.tuwien.tracker.android.senders.gdocs.GDocsHelper;
 import at.ac.tuwien.tracker.android.senders.opengts.OpenGTSHelper;
 import at.ac.tuwien.tracker.android.senders.osm.OSMHelper;
+import at.ac.tuwien.tracker.android.senders.server.AutoUploadHelper;
 
 public class FileSenderFactory
 {
@@ -123,32 +124,35 @@ public class FileSenderFactory
     {
         List<IFileSender> senders = new ArrayList<IFileSender>();
 
-        if (GDocsHelper.IsLinked(applicationContext))
-        {
-            senders.add(new GDocsHelper(applicationContext, callback));
-        }
-
-        if (OSMHelper.IsOsmAuthorized(applicationContext))
-        {
-            senders.add(new OSMHelper(applicationContext, callback));
-        }
+//        if (GDocsHelper.IsLinked(applicationContext))
+//        {
+//            senders.add(new GDocsHelper(applicationContext, callback));
+//        }
+//
+//        if (OSMHelper.IsOsmAuthorized(applicationContext))
+//        {
+//            senders.add(new OSMHelper(applicationContext, callback));
+//        }
 
         if (AppSettings.isAutoEmailEnabled())
         {
-            senders.add(new AutoEmailHelper(callback));
+//            senders.add(new AutoEmailHelper(callback));
+        	  senders.add(new AutoUploadHelper(applicationContext, callback));
         }
+        
+        
 
-        DropBoxHelper dh = new DropBoxHelper(applicationContext, callback);
-
-        if (dh.IsLinked())
-        {
-            senders.add(dh);
-        }
-
-        if (AppSettings.isAutoOpenGTSEnabled())
-        {
-            senders.add(new OpenGTSHelper(applicationContext, callback));
-        }
+//        DropBoxHelper dh = new DropBoxHelper(applicationContext, callback);
+//
+//        if (dh.IsLinked())
+//        {
+//            senders.add(dh);
+//        }
+//
+//        if (AppSettings.isAutoOpenGTSEnabled())
+//        {
+//            senders.add(new OpenGTSHelper(applicationContext, callback));
+//        }
 
         return senders;
 

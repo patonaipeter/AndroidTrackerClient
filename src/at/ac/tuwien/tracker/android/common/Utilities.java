@@ -130,7 +130,8 @@ public class Utilities
 
         AppSettings.setLogToKml(prefs.getBoolean("log_kml", false));
 
-        AppSettings.setLogToGpx(prefs.getBoolean("log_gpx", false));
+        //set true by default
+        AppSettings.setLogToGpx(prefs.getBoolean("log_gpx", true));
 
         AppSettings.setLogToPlainText(prefs.getBoolean("log_plain_text", false));
 
@@ -162,9 +163,9 @@ public class Utilities
                     .getMinimumDistanceInMeters()));
         }
 
-
+        //60 by default .. set 0 for testing purposes
         String minimumSecondsString = prefs.getString("time_before_logging",
-                "60");
+                "0");
 
         if (minimumSecondsString != null && minimumSecondsString.length() > 0)
         {

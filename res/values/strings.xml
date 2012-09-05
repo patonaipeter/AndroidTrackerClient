@@ -9,17 +9,12 @@
     
     <string-array name="main_options">
         <item>Register</item>
-        <item>GpsMain</item>
-        <!--
-        <item>Google Search</item>
-        <item>HTTP GET</item>
-        <item>HTTP GET with parameters</item>
-        <item>HTTP POST</item>
-    	<item>RSS</item>
-		<item>ATOM</item>
-		<item>Twitter</item>
-		<item>Facebook</item>
-        -->
+        <item>Basic Gps Logging</item>
+        <item>Race</item>
+        <item>Statistics</item>
+        <item>Social</item>
+        <item>Where was I?</item>
+    	
     </string-array>
 
     <string name="title_activity_register">RegisterActivity</string>

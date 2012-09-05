@@ -185,6 +185,10 @@ public class GpsLoggingService extends Service implements IActionListener
 
     public void OnComplete()
     {
+    	//TODO delete already uploaded files and create new
+    	//
+    	//    	ResetCurrentFileName(true);
+    	
         Utilities.HideProgress();
     }
 

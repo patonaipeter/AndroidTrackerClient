@@ -35,7 +35,7 @@ public class AppSettings extends Application
     private static int minimumSeconds;
     private static String newFileCreation;
     private static Float autoSendDelay = 0f;
-    private static boolean autoSendEnabled = false;
+    private static boolean autoSendEnabled = true;
     private static boolean autoEmailEnabled = false;
     private static String smtpServer;
     private static String smtpPort;
