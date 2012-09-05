@@ -209,7 +209,7 @@ public class Utilities
      
         //delete this in production
         AppSettings.setServer_password(prefs.getString("server_password", "admin"));
-        AppSettings.setServer_password(prefs.getString("server_password", "admin"));
+        AppSettings.setServer_username(prefs.getString("server_username", "admin"));
     }
 
     public static void ShowProgress(Context ctx, String title, String message)

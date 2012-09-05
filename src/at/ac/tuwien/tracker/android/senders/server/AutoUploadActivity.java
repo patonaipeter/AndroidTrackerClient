@@ -132,12 +132,12 @@ public class AutoUploadActivity extends PreferenceActivity implements
     	Utilities.LogInfo("AutoUpload Preference Changed");
     	if (preference.getKey().equals("server_username"))
     	{
-
+    		Utilities.LogInfo("AutoUpload usearname Changed");
     		EditTextPreference txtUsername = (EditTextPreference) findPreference("server_username");
     		txtUsername.setText((String) newValue);
     		AppSettings.setServer_username((String) newValue);
     	}else if(preference.getKey().equals("server_password")) {
-
+    		Utilities.LogInfo("AutoUpload pass Changed");
     		EditTextPreference txtPassword = (EditTextPreference) findPreference("server_password");
     		txtPassword.setText((String) newValue);
     		AppSettings.setServer_password((String) newValue);
