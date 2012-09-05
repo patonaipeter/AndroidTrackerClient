@@ -313,5 +313,8 @@
   	<string name="server_username_description">Set the Login name that is registered on the web server</string>
   	<string name="server_password_title">Server Password</string>
   	<string name="server_password_description">Set the Login password that is registered o the Webserver</string>
-    
+  	
+  	<string name="autosend">Auto Send</string>
+  	<string name="autosend_summary">Send data atomatically to webserver</string>
+
 </resources>

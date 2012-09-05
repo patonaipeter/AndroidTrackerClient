@@ -126,11 +126,9 @@ class AutoSendHandler implements Runnable
         try
         {
         	
-        	//TODO store username password in settings
-        	String username = "admin";
-        	String password = "admin";
-//        	String username = AppSettings.serverUsername();
-//        	String password = AppSettings.serverPassword();
+
+        	String username = AppSettings.getServer_username();
+        	String password = AppSettings.getServer_password();
         	
 
         	final String sendUrl = url + "/postformdata";

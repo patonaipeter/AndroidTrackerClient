@@ -188,10 +188,10 @@ public class Utilities
             AppSettings.setNewFileOnceADay(false);
         }
 
-        AppSettings.setAutoSendEnabled(prefs.getBoolean("autosend_enabled", false));
+        AppSettings.setAutoSendEnabled(prefs.getBoolean("autosend_enabled", true));
 
-        AppSettings.setAutoEmailEnabled(prefs.getBoolean("autoemail_enabled",
-                false));
+//        AppSettings.setAutoEmailEnabled(prefs.getBoolean("autoemail_enabled",
+//                false));
 
         if (Float.valueOf(prefs.getString("autosend_frequency", "0")) >= 8f)
         {

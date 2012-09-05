@@ -111,9 +111,10 @@ public class FileSenderFactory
 //            senders.add(new OSMHelper(applicationContext, callback));
 //        }
 
-        if (AppSettings.isAutoEmailEnabled())
+        //TODO
+        if (AppSettings.isAutoSendEnabled())
         {
-//            senders.add(new AutoEmailHelper(callback));
+        		Utilities.LogInfo("new UploadHeloper intatiated");
         	  senders.add(new AutoUploadHelper(applicationContext, callback));
         }
         

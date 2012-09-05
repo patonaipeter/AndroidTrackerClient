@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   android:key="autoupload_preferences">
+                  
+    <CheckBoxPreference android:key="autosend_enabled"
+                        android:title="@string/autosend"
+                        android:summary="@string/autosend_summary"/>
 
   <EditTextPreference android:key="server_username"
                         android:title="@string/server_username_title" android:summary="@string/server_username_description"
