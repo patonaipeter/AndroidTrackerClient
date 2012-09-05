@@ -208,6 +208,9 @@
     <string name="autoemail_autosend">Enable emails</string>
     <string name="autoemail_autosend_summary">Enables sending the log file to an email address of your choosing.
     </string>
+    
+     <string name="autoupload_autosend">Enable auto upload</string>
+    <string name="autoupload_autosend_summary">Enables sending the log file to the webserver </string>
 
 
     <string name="autoemail_target">Target email addresses</string>
@@ -254,39 +257,7 @@
 
 
 
-    <string name="osm_setup_title">OpenStreetMap</string>
-    <string name="osm_setup_summary">Set tags, description, visibility and authorization for uploading GPS Traces
-    </string>
-    <string name="osm_preferences_title">OpenStreetMap Preferences</string>
-
-
-
-    <string name="osm_lbl_authorize">Authorize this app</string>
-    <string name="osm_lbl_authorize_description">You will need to grant this app permissions in order to upload GPS
-        traces to OpenStreetMap. You can set tags, descriptions and visibility here after you have authorized this app.
-    </string>
-
-
-    <string name="osm_requesttoken_url">http://www.openstreetmap.org/oauth/request_token</string>
-    <string name="osm_accesstoken_url">http://www.openstreetmap.org/oauth/access_token</string>
-    <string name="osm_authorize_url">http://www.openstreetmap.org/oauth/authorize</string>
-    <string name="osm_gpstrace_url">http://www.openstreetmap.org/api/0.6/gpx/create</string>
-
-    <string name="osm_upload">OpenStreetMap</string>
-
-    <string name="osm_resetauth">Clear authorization</string>
-    <string name="osm_resetauth_summary">Remove the local authorization used to talk to your OSM account.</string>
-    <string name="osm_auth_error">An error occurred while trying to contact the OpenStreetMap servers. Check that your
-        phone has a connection or please try again later.
-    </string>
-
-    <string name="osm_visibility">Visibility</string>
-    <string name="osm_visibility_summary">Set the visibility of your GPS Trace uploads</string>
-
-    <string name="osm_description">Description</string>
-    <string name="osm_description_summary">The description to use when uploading a trace</string>
-    <string name="osm_tags">Tags</string>
-    <string name="osm_tags_summary">The tags to apply when uploading a trace</string>
+   
 
     <string name="no_files_found">No files found, nothing to share or upload.</string>
     <string name="osm_pick_file">Pick a file to upload</string>
@@ -299,53 +270,13 @@
     <string name="pref_general_title">General Options</string>
     <string name="pref_general_summary">Startup and display options</string>
 
-
-    <string name="emailprovider_google">Google Mail</string>
-    <string name="emailprovider_yahoo">Yahoo! Mail</string>
-    <string name="emailprovider_msn">Windows Live Mail</string>
-    <string name="emailprovider_manual">Manual</string>
     <string name="btn_single_point">Log a single point</string>
 
-    <string name="dropbox_setup_title">Dropbox</string>
-    <string name="dropbox_setup_summary">Authorize with Dropbox to allow file uploads</string>
-    <string name="dropbox_authorize_description">To use Dropbox features, you will need to authorize GPSLogger to upload
-        files to your account.
-    </string>
-    <string name="dropbox_authorize">Authorize</string>
-    <string name="dropbox_unauthorize">Remove Authorization</string>
-    <string name="dropbox_unauthorize_description">You are authorized with Dropbox. Files will be uploaded to
-        \'Apps\\GPSLogger for Android\' You can unlink GPSLogger from Dropbox if you wish.
-    </string>
-    <string name="dropbox_couldnotauthorize">Could not authorize with Dropbox, please try again later</string>
-    <string name="dropbox_upload">Dropbox</string>
-
-
+   
     <string name="menu_upload">Upload</string>
-
-
-    <string name="autoemail_from">From address</string>
-    <string name="autoemail_from_summary">Some email providers require a from address. Use this only if you need it.
-    </string>
-
-    <string name="gdocs_upload">Google Docs</string>
-
-    <string name="gdocs_settings_screenname">Google Docs Upload Settings</string>
-    <string name="gdocs_startauthorization">Authorize with Google Docs</string>
-    <string name="gdocs_authorize_summary">Takes you to Google Docs where you need to authorize GPSLogger</string>
-    <string name="gdocs_clearauthorization">Clear Authorization</string>
-    <string name="gdocs_clearauthorization_summary">Forgets local GDocs settings. To permanently revoke access, go to Google Account settings</string>
-    <string name="gdocs_setup_title">Google Docs</string>
-    <string name="gdocs_setup_summary">Authorize with Google Docs to allow uploads</string>
-    <string name="gdocs_test_summary">Upload a test file to Google Docs</string>
-    <string name="gdocs_test_title">Test upload</string>
-    <string name="gdocs_testupload_error">Could not upload a test file</string>
-    <string name="gdocs_testupload_success">Uploaded. Please check your Google Documents for a new file.</string>
-    <string name="gdocs_selectgoogleaccount">Select a Google Account</string>
-    
     <string name="email_upload">Email a file</string>
 
     <string name="autoemail_sendto_csv">Comma separated email addresses</string>
-
 
     <string name="autosend_enabled">Allow auto sending</string>
     <string name="autosend_enabled_summary">Allows sending the files to various targets</string>
@@ -361,32 +292,22 @@
     <string name="autosend_sending">Auto sending</string>
     <string name="summary_autosend">Auto send:</string>
 
-    <string name="pref_autosend_title">Auto send, email and upload</string>
-    <string name="pref_autosend_summary">Email, share and upload options</string>
+    <string name="pref_autosend_title">Auto send, and upload</string>
+    <string name="pref_autosend_summary">Share and upload options</string>
 
     <string name="shortcut_start">Start</string>
     <string name="shortcut_stop">Stop</string>
     <string name="shortcut_pickaction">Pick an action</string>
 
-    <string name="log_opengts_title">Log to OpenGTS Server</string>
-    <string name="log_opengts_summary">Send GPRMC data to an online OpenGTS server.</string>
-    <string name="opengts_setup_title">OpenGTS Setup</string>
-    <string name="opengts_setup_summary">Send GPS traces to an OpenGTS server of your choice.</string>
-    <string name="opengts_enabled">Enable OpenGTS</string>
-    <string name="opengts_enabled_summary">Enable this OpenGTS server.</string>
-    <string name="autoopengts_autosend">Enable Automatically Send</string>
-    <string name="autoopengts_autosend_summary">Enables automatically sending the GPS traces.</string>
-    <string name="autoopengts_server_category">OpenGTS Settings</string>
-    <string name="autoopengts_invalid_form">Invalid values</string>
-    <string name="autoopengts_invalid_form_message">Please ensure that all of the fields have been filled in properly</string>
-    <string name="opengts_upload">Send to OpenGTS</string>
-    <string name="autoopengts_server">Server</string>
-    <string name="autoopengts_server_summary">Hostname or IP</string>
-    <string name="opengts_server_port">Port</string>
-    <string name="opengts_server_communication_method">Communication Method</string>
-    <string name="opengts_server_communication_method_summary">HTTP-based or Raw Socket Based communication</string>
-    <string name="autoopengts_server_path">Server Path</string>
-    <string name="autoopengts_server_path_summary">Optional and only for HTTP-based communication. For example \'/gprmc/Data\'</string>
-    <string name="autoopengts_device_id">Device ID</string>
+  
+    <string name="autoupload_title">Auto Upload Settings</string>
+    <string name="autoupload_targets_category">Auto Upload Target(s)</string>
+    <string name="autoupload_summary">Settings for auto upload GPS data to Webserver</string>
+    
+  	<string name="placehodler">Placeholders string</string>
+  	<string name="server_username_title">Server Username</string>
+  	<string name="server_username_description">Set the Login name that is registered on the web server</string>
+  	<string name="server_password_title">Server Password</string>
+  	<string name="server_password_description">Set the Login password that is registered o the Webserver</string>
     
 </resources>

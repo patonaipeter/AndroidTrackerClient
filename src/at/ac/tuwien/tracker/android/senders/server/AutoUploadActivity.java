@@ -3,15 +3,14 @@ package at.ac.tuwien.tracker.android.senders.server;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
+import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.IActionListener;
 import at.ac.tuwien.tracker.android.common.IMessageBoxCallback;
 import at.ac.tuwien.tracker.android.common.Utilities;
@@ -25,52 +24,60 @@ public class AutoUploadActivity extends PreferenceActivity implements
 
     private final Handler handler = new Handler();
 
-
+    SharedPreferences prefs; 
+    
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.autoemailsettings);
+        addPreferencesFromResource(R.xml.autouploadsettings);
 
-        CheckBoxPreference chkEnabled = (CheckBoxPreference) findPreference("autoemail_enabled");
+//        CheckBoxPreference chkEnabled = (CheckBoxPreference) findPreference("autoemail_enabled");
+//
+//        chkEnabled.setOnPreferenceChangeListener(this);
+//
+//        ListPreference lstPresets = (ListPreference) findPreference("autoemail_preset");
+//        lstPresets.setOnPreferenceChangeListener(this);
+//
+//        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
+//        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
+//        txtSmtpServer.setOnPreferenceChangeListener(this);
+//        txtSmtpPort.setOnPreferenceChangeListener(this);
+//
+//        Preference testEmailPref = findPreference("smtp_testemail");
+//
+//        testEmailPref.setOnPreferenceClickListener(this); 
 
-        chkEnabled.setOnPreferenceChangeListener(this);
-
-        ListPreference lstPresets = (ListPreference) findPreference("autoemail_preset");
-        lstPresets.setOnPreferenceChangeListener(this);
-
-        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
-        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
-        txtSmtpServer.setOnPreferenceChangeListener(this);
-        txtSmtpPort.setOnPreferenceChangeListener(this);
-
-        Preference testEmailPref = findPreference("smtp_testemail");
-
-        testEmailPref.setOnPreferenceClickListener(this);
-
+        //
+        
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        
+        EditTextPreference username = (EditTextPreference) findPreference("server_username");
+        username.setOnPreferenceChangeListener(this);
+        EditTextPreference password = (EditTextPreference) findPreference("server_password");
+        password.setOnPreferenceChangeListener(this);
+        
+        username.setText(AppSettings.getServer_username());
+        password.setText(AppSettings.getServer_password());
+        
+        
     }
-
+    //TODO Test login data
     public boolean onPreferenceClick(Preference preference)
     {
 
-        if (!IsFormValid())
-        {
-            Utilities.MsgBox(getString(R.string.autoemail_invalid_form),
-                    getString(R.string.autoemail_invalid_form_message),
-                    AutoUploadActivity.this);
-            return false;
-        }
+//        if (!IsFormValid())
+//        {
+//            Utilities.MsgBox(getString(R.string.autoemail_invalid_form),
+//                    getString(R.string.autoemail_invalid_form_message),
+//                    AutoUploadActivity.this);
+//            return false;
+//        }
+//
+//    
+//        EditTextPreference username = (EditTextPreference) findPreference("server_username");
+//        EditTextPreference password = (EditTextPreference) findPreference("server_password");
 
-        Utilities.ShowProgress(this, getString(R.string.autoemail_sendingtest),
-                getString(R.string.please_wait));
-
-        CheckBoxPreference chkUseSsl = (CheckBoxPreference) findPreference("smtp_ssl");
-        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
-        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
-        EditTextPreference txtUsername = (EditTextPreference) findPreference("smtp_username");
-        EditTextPreference txtPassword = (EditTextPreference) findPreference("smtp_password");
-        EditTextPreference txtTarget = (EditTextPreference) findPreference("autoemail_target");
-        EditTextPreference txtFrom = (EditTextPreference) findPreference("smtp_from");
 
 
 //        AutoUploadHelper aeh = new AutoUploadHelper(null);
@@ -85,19 +92,10 @@ public class AutoUploadActivity extends PreferenceActivity implements
     private boolean IsFormValid()
     {
 
-        CheckBoxPreference chkEnabled = (CheckBoxPreference) findPreference("autoemail_enabled");
-        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
-        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
-        EditTextPreference txtUsername = (EditTextPreference) findPreference("smtp_username");
-        EditTextPreference txtPassword = (EditTextPreference) findPreference("smtp_password");
-        EditTextPreference txtTarget = (EditTextPreference) findPreference("autoemail_target");
+        EditTextPreference txtUsername = (EditTextPreference) findPreference("server_username");
+        EditTextPreference txtPassword = (EditTextPreference) findPreference("server_password");
 
-        return !chkEnabled.isChecked() || txtSmtpServer.getText() != null
-                && txtSmtpServer.getText().length() > 0 && txtSmtpPort.getText() != null
-                && txtSmtpPort.getText().length() > 0 && txtUsername.getText() != null
-                && txtUsername.getText().length() > 0 && txtPassword.getText() != null
-                && txtPassword.getText().length() > 0 && txtTarget.getText() != null
-                && txtTarget.getText().length() > 0;
+        return  txtUsername.getText().length() > 0 && txtPassword.getText() != null;
 
     }
 
@@ -107,9 +105,9 @@ public class AutoUploadActivity extends PreferenceActivity implements
         {
             if (!IsFormValid())
             {
-                Utilities.MsgBox(getString(R.string.autoemail_invalid_form),
-                        getString(R.string.autoemail_invalid_form_message),
-                        this);
+//                Utilities.MsgBox(getString(R.string.autoemail_invalid_form),
+//                        getString(R.string.autoemail_invalid_form_message),
+//                        this);
                 return false;
             }
             else
@@ -131,54 +129,43 @@ public class AutoUploadActivity extends PreferenceActivity implements
 
     public boolean onPreferenceChange(Preference preference, Object newValue)
     {
+    	Utilities.LogInfo("AutoUpload Preference Changed");
+    	if (preference.getKey().equals("server_username"))
+    	{
 
-        if (preference.getKey().equals("autoemail_preset"))
-        {
-            int newPreset = Integer.valueOf(newValue.toString());
+    		EditTextPreference txtUsername = (EditTextPreference) findPreference("server_username");
+    		txtUsername.setText((String) newValue);
+    		AppSettings.setServer_username((String) newValue);
+    	}else if(preference.getKey().equals("server_password")) {
 
-            switch (newPreset)
-            {
-                case 0:
-                    // Gmail
-                    SetSmtpValues("smtp.gmail.com", "465", true);
-                    break;
-                case 1:
-                    // Windows live mail
-                    SetSmtpValues("smtp.live.com", "587", false);
-                    break;
-                case 2:
-                    // Yahoo
-                    SetSmtpValues("smtp.mail.yahoo.com", "465", true);
-                    break;
-                case 99:
-                    // manual
-                    break;
-            }
-
-        }
-
+    		EditTextPreference txtPassword = (EditTextPreference) findPreference("server_password");
+    		txtPassword.setText((String) newValue);
+    		AppSettings.setServer_password((String) newValue);
+    	}	
+        	
+       
         return true;
     }
 
-    private void SetSmtpValues(String server, String port, boolean useSsl)
+    private void setServerValues(String username, String password)
     {
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = prefs.edit();
-
-        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
-        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
-        CheckBoxPreference chkUseSsl = (CheckBoxPreference) findPreference("smtp_ssl");
-
-        // Yahoo
-        txtSmtpServer.setText(server);
-        editor.putString("smtp_server", server);
-        txtSmtpPort.setText(port);
-        editor.putString("smtp_port", port);
-        chkUseSsl.setChecked(useSsl);
-        editor.putBoolean("smtp_ssl", useSsl);
-
-        editor.commit();
+//        SharedPreferences prefs = PreferenceManager
+//                .getDefaultSharedPreferences(getApplicationContext());
+//        SharedPreferences.Editor editor = prefs.edit();
+//
+//        EditTextPreference txtSmtpServer = (EditTextPreference) findPreference("smtp_server");
+//        EditTextPreference txtSmtpPort = (EditTextPreference) findPreference("smtp_port");
+//        CheckBoxPreference chkUseSsl = (CheckBoxPreference) findPreference("smtp_ssl");
+//
+//        // Yahoo
+//        txtSmtpServer.setText(server);
+//        editor.putString("smtp_server", server);
+//        txtSmtpPort.setText(port);
+//        editor.putString("smtp_port", port);
+//        chkUseSsl.setChecked(useSsl);
+//        editor.putBoolean("smtp_ssl", useSsl);
+//
+//        editor.commit();
 
     }
 
@@ -206,11 +193,12 @@ public class AutoUploadActivity extends PreferenceActivity implements
         Utilities.MsgBox(getString(R.string.sorry), getString(R.string.error_connection), this);
     }
 
+    //TODO replace placeholder
     private void SuccessfulSending()
     {
         Utilities.HideProgress();
         Utilities.MsgBox(getString(R.string.success),
-                getString(R.string.autoemail_testresult_success), this);
+                getString(R.string.placehodler), this);
     }
 
     public void OnComplete()

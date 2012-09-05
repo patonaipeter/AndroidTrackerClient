@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
                   android:key="autoemail_preferences">
 
-    <CheckBoxPreference android:key="autoemail_enabled"
+<!--     <CheckBoxPreference android:key="autoemail_enabled"
                         android:title="@string/autoemail_autosend"
                         android:summary="@string/autoemail_autosend_summary"/>
 
@@ -39,5 +39,5 @@
         <Preference android:title="@string/autoemail_smtp_testemail"
                     android:summary="@string/autoemail_test" android:key="smtp_testemail"/>
     </PreferenceCategory>
-
+ -->
 </PreferenceScreen>

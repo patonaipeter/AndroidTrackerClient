@@ -83,17 +83,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:label="@string/osm_preferences_title"
-                  android:name="at.ac.tuwien.tracker.android.senders.osm.OSMAuthorizationActivity">
-            <intent-filter>
-                <action android:name="at.ac.tuwien.tracker.android.OSM_AUTHORIZE"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="gpslogger" android:host="authorize"/>
-            </intent-filter>
-        </activity>
-
         <activity android:name="at.ac.tuwien.tracker.android.GpsSettingsActivity"
                   android:label="@string/settings_screen_name"
                   android:screenOrientation="portrait">
@@ -107,12 +96,15 @@
                 <action android:name="at.ac.tuwien.tracker.android.AUTOEMAIL_SETUP"/>
             </intent-filter>
         </activity>
-        <activity android:name="at.ac.tuwien.tracker.android.senders.gdocs.GDocsSettingsActivity" android:label="@string/gdocs_settings_screenname">
+       
+        <activity android:name="at.ac.tuwien.tracker.android.senders.server.AutoUploadActivity"
+                  android:label="@string/autoupload_title" android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="at.ac.tuwien.tracker.android.GDOCS_SETUP"/>
                 <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="at.ac.tuwien.tracker.android.AUTOUPLOAD_SETUP"/>
             </intent-filter>
         </activity>
+        
         <activity android:name=".shortcuts.ShortcutCreate" android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT"/>
@@ -129,14 +121,7 @@
                 <action android:name="android.intent.action.VIEW"/>
             </intent-filter>
         </activity>
-        <activity android:name="at.ac.tuwien.tracker.android.senders.opengts.OpenGTSActivity"
-                  android:label="@string/opengts_setup_title">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="at.ac.tuwien.tracker.android.OPENGTS_SETUP"/>
-            </intent-filter>
-        </activity>
-
+        
         <receiver android:enabled="true"
                   android:name="at.ac.tuwien.tracker.android.StartupReceiver"
                   android:permission="android.permission.RECEIVE_BOOT_COMPLETED">

@@ -30,7 +30,6 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import at.ac.tuwien.tracker.android.common.Utilities;
-import at.ac.tuwien.tracker.android.senders.osm.OSMHelper;
 
 import com.example.androidtrackerclient.R;
 
@@ -77,12 +76,6 @@ public class GpsSettingsActivity extends PreferenceActivity
         Preference enableDisablePref = findPreference("enableDisableGps");
         enableDisablePref.setOnPreferenceClickListener(new AndroidLocationPreferenceClickListener());
 
-        Preference osmSetupPref = findPreference("osm_setup");
-        osmSetupPref.setOnPreferenceClickListener(new OSMPreferenceClickListener());
-
-        CheckBoxPreference chkLog_opengts = (CheckBoxPreference) findPreference("log_opengts");
-        chkLog_opengts.setOnPreferenceClickListener(new LogOpenGTSPreferenceClickListener(prefs));
-
     }
 
 
@@ -110,19 +103,19 @@ public class GpsSettingsActivity extends PreferenceActivity
         }
     }
 
-    /**
-     * Opens the OpenStreetMap preferences screen
-     */
-    private class OSMPreferenceClickListener implements OnPreferenceClickListener
-    {
-
-        public boolean onPreferenceClick(Preference preference)
-        {
-            startActivity(OSMHelper.GetOsmSettingsIntent(getApplicationContext()));
-
-            return true;
-        }
-    }
+//    /**
+//     * Opens the OpenStreetMap preferences screen
+//     */
+//    private class OSMPreferenceClickListener implements OnPreferenceClickListener
+//    {
+//
+//        public boolean onPreferenceClick(Preference preference)
+//        {
+//            startActivity(OSMHelper.GetOsmSettingsIntent(getApplicationContext()));
+//
+//            return true;
+//        }
+//    }
 
 
     private class ImperialPreferenceChangeListener implements Preference.OnPreferenceChangeListener
@@ -211,31 +204,7 @@ public class GpsSettingsActivity extends PreferenceActivity
 
     }
 
-    /**
-     * Opens the OpenGTS preferences
-     * Listener to ensure that the server is configured when the user wants to enable OpenGTS logging logger
-     */
-    private class LogOpenGTSPreferenceClickListener implements OnPreferenceClickListener
-    {
-        private SharedPreferences prefs;
-
-        public LogOpenGTSPreferenceClickListener(SharedPreferences prefs)
-        {
-            this.prefs = prefs;
-        }
-
-        public boolean onPreferenceClick(Preference preference)
-        {
-            CheckBoxPreference chkLog_opengts = (CheckBoxPreference) findPreference("log_opengts");
-            boolean opengts_enabled = prefs.getBoolean("opengts_enabled", false);
-
-            if (chkLog_opengts.isChecked() && !opengts_enabled)
-            {
-                startActivity(new Intent("com.mendhak.gpslogger.OPENGTS_SETUP"));
-            }
-            return true;
-        }
-    }
+  
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus)
@@ -244,13 +213,13 @@ public class GpsSettingsActivity extends PreferenceActivity
         if (hasFocus)
         {
 
-            CheckBoxPreference chkLog_opengts = (CheckBoxPreference) findPreference("log_opengts");
-            boolean opengts_enabled = prefs.getBoolean("opengts_enabled", false);
-
-            if (chkLog_opengts.isChecked() && !opengts_enabled)
-            {
-                chkLog_opengts.setChecked(false);
-            }
+//            CheckBoxPreference chkLog_opengts = (CheckBoxPreference) findPreference("log_opengts");
+//            boolean opengts_enabled = prefs.getBoolean("opengts_enabled", false);
+//
+//            if (chkLog_opengts.isChecked() && !opengts_enabled)
+//            {
+//                chkLog_opengts.setChecked(false);
+//            }
 
         }
     }

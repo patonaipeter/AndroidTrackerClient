@@ -37,23 +37,23 @@
 	<item>0.08</item>
 </string-array>
 
-<string-array name="autoemail_presets">
+<!-- <string-array name="autoemail_presets">
 	<item>@string/emailprovider_google</item>
 	<item>@string/emailprovider_msn</item>
 	<item>@string/emailprovider_yahoo</item>
 	<item>@string/emailprovider_manual</item>
-</string-array>
+</string-array> -->
 
-<string-array name="autoemail_presetvalues">
+<!-- <string-array name="autoemail_presetvalues">
 	<item>0</item>
 	<item>1</item>
 	<item>2</item>
 	<item>99</item>
 </string-array>
 
+ -->
 
-
-<string-array name="osm_visibility_choices">
+<!-- <string-array name="osm_visibility_choices">
 	<item>private</item>
 	<item>public</item>
 	<item>trackable</item>
@@ -62,13 +62,13 @@
 
 <string-array name="opengts_server_communication_methods">
     <item>HTTP/GET Based</item>
-    <!-- <item>Raw Socket based</item> -->
+    <item>Raw Socket based</item>
 </string-array>
 
 <string-array name="opengts_server_communication_methods_values">
     <item>HTTP/GET</item>
-    <!-- <item>RAW</item> -->
-</string-array>
+    <item>RAW</item>
+</string-array> -->
 
 
 </resources>

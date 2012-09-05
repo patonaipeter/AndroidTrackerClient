@@ -37,27 +37,14 @@ public class AppSettings extends Application
     private static Float autoSendDelay = 0f;
     private static boolean autoSendEnabled = true;
     private static boolean autoEmailEnabled = false;
-    private static String smtpServer;
-    private static String smtpPort;
-    private static String smtpUsername;
-    private static String smtpPassword;
-    private static String smtpFrom;
-    private static String autoEmailTargets;
-    private static boolean smtpSsl;
+
     private static boolean debugToFile;
     private static int minimumDistance;
     private static boolean shouldSendZipFile;
 
-    private static boolean LogToOpenGTS;
-    private static boolean openGTSEnabled;
-    private static boolean autoOpenGTSEnabled;
-    private static String openGTSServer;
-    private static String openGTSServerPort;
-    private static String openGTSServerCommunicationMethod;
-    private static String openGTSServerPath;
-    private static String openGTSDeviceId;
-
-
+    private static String server_username;
+    private static String server_password;
+    
     /**
      * @return the useImperial
      */
@@ -245,8 +232,6 @@ public class AppSettings extends Application
         {
             return autoSendDelay;
         }
-
-
     }
 
     /**
@@ -254,7 +239,6 @@ public class AppSettings extends Application
      */
     static void setAutoSendDelay(Float autoSendDelay)
     {
-
         if (autoSendDelay >= 8f)
         {
             AppSettings.autoSendDelay = 8f;
@@ -263,8 +247,6 @@ public class AppSettings extends Application
         {
             AppSettings.autoSendDelay = autoSendDelay;
         }
-
-
     }
 
     /**
@@ -283,68 +265,7 @@ public class AppSettings extends Application
         AppSettings.autoEmailEnabled = autoEmailEnabled;
     }
 
-
-    static void setSmtpServer(String smtpServer)
-    {
-        AppSettings.smtpServer = smtpServer;
-    }
-
-    public static String getSmtpServer()
-    {
-        return smtpServer;
-    }
-
-    static void setSmtpPort(String smtpPort)
-    {
-        AppSettings.smtpPort = smtpPort;
-    }
-
-    public static String getSmtpPort()
-    {
-        return smtpPort;
-    }
-
-    static void setSmtpUsername(String smtpUsername)
-    {
-        AppSettings.smtpUsername = smtpUsername;
-    }
-
-    public static String getSmtpUsername()
-    {
-        return smtpUsername;
-    }
-
-
-    static void setSmtpPassword(String smtpPassword)
-    {
-        AppSettings.smtpPassword = smtpPassword;
-    }
-
-    public static String getSmtpPassword()
-    {
-        return smtpPassword;
-    }
-
-    static void setSmtpSsl(boolean smtpSsl)
-    {
-        AppSettings.smtpSsl = smtpSsl;
-    }
-
-    public static boolean isSmtpSsl()
-    {
-        return smtpSsl;
-    }
-
-    static void setAutoEmailTargets(String autoEmailTargets)
-    {
-        AppSettings.autoEmailTargets = autoEmailTargets;
-    }
-
-    public static String getAutoEmailTargets()
-    {
-        return autoEmailTargets;
-    }
-
+  
     public static boolean isDebugToFile()
     {
         return debugToFile;
@@ -366,30 +287,7 @@ public class AppSettings extends Application
         AppSettings.shouldSendZipFile = shouldSendZipFile;
     }
 
-    private static String getSmtpFrom()
-    {
-        return smtpFrom;
-    }
 
-    public static void setSmtpFrom(String smtpFrom)
-    {
-        AppSettings.smtpFrom = smtpFrom;
-    }
-
-    /**
-     * Returns the from value to use when sending an email
-     *
-     * @return
-     */
-    public static String getSenderAddress()
-    {
-        if (getSmtpFrom() != null && getSmtpFrom().length() > 0)
-        {
-            return getSmtpFrom();
-        }
-
-        return getSmtpUsername();
-    }
 
     public static boolean isAutoSendEnabled()
     {
@@ -401,85 +299,22 @@ public class AppSettings extends Application
         AppSettings.autoSendEnabled = autoSendEnabled;
     }
 
-    public static boolean shouldLogToOpenGTS()
-    {
-        return LogToOpenGTS;
-    }
+	public static String getServer_username() {
+		return server_username;
+	}
 
-    public static void setLogToOpenGTS(boolean logToOpenGTS)
-    {
-        AppSettings.LogToOpenGTS = logToOpenGTS;
-    }
+	public static void setServer_username(String server_username) {
+		AppSettings.server_username = server_username;
+	}
 
-    public static boolean isOpenGTSEnabled()
-    {
-        return openGTSEnabled;
-    }
+	public static String getServer_password() {
+		return server_password;
+	}
 
-    public static void setOpenGTSEnabled(boolean openGTSEnabled)
-    {
-        AppSettings.openGTSEnabled = openGTSEnabled;
-    }
+	public static void setServer_password(String server_password) {
+		AppSettings.server_password = server_password;
+	}
 
-    public static boolean isAutoOpenGTSEnabled()
-    {
-        return autoOpenGTSEnabled;
-    }
-
-    public static void setAutoOpenGTSEnabled(boolean autoOpenGTSEnabled)
-    {
-        AppSettings.autoOpenGTSEnabled = autoOpenGTSEnabled;
-    }
-
-    public static String getOpenGTSServer()
-    {
-        return openGTSServer;
-    }
-
-    public static void setOpenGTSServer(String openGTSServer)
-    {
-        AppSettings.openGTSServer = openGTSServer;
-    }
-
-    public static String getOpenGTSServerPort()
-    {
-        return openGTSServerPort;
-    }
-
-    public static void setOpenGTSServerPort(String openGTSServerPort)
-    {
-        AppSettings.openGTSServerPort = openGTSServerPort;
-    }
-
-    public static String getOpenGTSServerCommunicationMethod()
-    {
-        return openGTSServerCommunicationMethod;
-    }
-
-    public static void setOpenGTSServerCommunicationMethod(String openGTSServerCommunicationMethod)
-    {
-        AppSettings.openGTSServerCommunicationMethod = openGTSServerCommunicationMethod;
-    }
-
-    public static String getOpenGTSServerPath()
-    {
-        return openGTSServerPath;
-    }
-
-    public static void setOpenGTSServerPath(String openGTSServerPath)
-    {
-        AppSettings.openGTSServerPath = openGTSServerPath;
-    }
-
-    public static String getOpenGTSDeviceId()
-    {
-        return openGTSDeviceId;
-    }
-
-    public static void setOpenGTSDeviceId(String openGTSDeviceId)
-    {
-        AppSettings.openGTSDeviceId = openGTSDeviceId;
-    }
-
+    
 
 }

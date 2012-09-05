@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:key="autoupload_preferences">
+
+  <EditTextPreference android:key="server_username"
+                        android:title="@string/server_username_title" android:summary="@string/server_username_description"
+                        android:dialogTitle="@string/server_username_title" android:hint="@string/server_username_description"/>
+  <EditTextPreference android:key="server_password"
+                        android:title="@string/server_password_title" android:summary="@string/server_password_description"
+                        android:dialogTitle="@string/server_password_title" android:hint="@string/server_password_description"/>
+  
+
+</PreferenceScreen>

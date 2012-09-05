@@ -29,39 +29,16 @@ import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.IActionListener;
 import at.ac.tuwien.tracker.android.common.Session;
 import at.ac.tuwien.tracker.android.common.Utilities;
-import at.ac.tuwien.tracker.android.senders.dropbox.DropBoxHelper;
-import at.ac.tuwien.tracker.android.senders.email.AutoEmailHelper;
-import at.ac.tuwien.tracker.android.senders.gdocs.GDocsHelper;
-import at.ac.tuwien.tracker.android.senders.opengts.OpenGTSHelper;
-import at.ac.tuwien.tracker.android.senders.osm.OSMHelper;
 import at.ac.tuwien.tracker.android.senders.server.AutoUploadHelper;
 
 public class FileSenderFactory
 {
 
-    public static IFileSender GetOsmSender(Context applicationContext, IActionListener callback)
-    {
-        return new OSMHelper(applicationContext, callback);
-    }
 
-    public static IFileSender GetDropBoxSender(Context applicationContext, IActionListener callback)
+    
+    public static IFileSender GetServerUploadSender(Context applicationContext, IActionListener callback)
     {
-        return new DropBoxHelper(applicationContext, callback);
-    }
-
-    public static IFileSender GetGDocsSender(Context applicationContext, IActionListener callback)
-    {
-        return new GDocsHelper(applicationContext, callback);
-    }
-
-    public static IFileSender GetEmailSender(IActionListener callback)
-    {
-        return new AutoEmailHelper(callback);
-    }
-
-    public static IFileSender GetOpenGTSSender(Context applicationContext, IActionListener callback)
-    {
-        return new OpenGTSHelper(applicationContext, callback);
+        return new AutoUploadHelper(applicationContext, callback);
     }
 
     public static void SendFiles(Context applicationContext, IActionListener callback)

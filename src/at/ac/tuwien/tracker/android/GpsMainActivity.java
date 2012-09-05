@@ -65,13 +65,7 @@ import at.ac.tuwien.tracker.android.loggers.FileLoggerFactory;
 import at.ac.tuwien.tracker.android.loggers.IFileLogger;
 import at.ac.tuwien.tracker.android.senders.FileSenderFactory;
 import at.ac.tuwien.tracker.android.senders.IFileSender;
-import at.ac.tuwien.tracker.android.senders.dropbox.DropBoxAuthorizationActivity;
-import at.ac.tuwien.tracker.android.senders.dropbox.DropBoxHelper;
-import at.ac.tuwien.tracker.android.senders.email.AutoEmailActivity;
-import at.ac.tuwien.tracker.android.senders.gdocs.GDocsHelper;
-import at.ac.tuwien.tracker.android.senders.gdocs.GDocsSettingsActivity;
-import at.ac.tuwien.tracker.android.senders.opengts.OpenGTSActivity;
-import at.ac.tuwien.tracker.android.senders.osm.OSMHelper;
+import at.ac.tuwien.tracker.android.senders.server.AutoUploadActivity;
 
 import com.example.androidtrackerclient.R;
 
@@ -436,24 +430,12 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
         switch (itemId)
         {
+        
+        //SelectAndUploadFile()
+        
             case R.id.mnuSettings:
                 Intent settingsActivity = new Intent(getApplicationContext(), GpsSettingsActivity.class);
                 startActivity(settingsActivity);
-                break;
-            case R.id.mnuOSM:
-                UploadToOpenStreetMap();
-                break;
-            case R.id.mnuDropBox:
-                UploadToDropBox();
-                break;
-            case R.id.mnuGDocs:
-                UploadToGoogleDocs();
-                break;
-            case R.id.mnuOpenGTS:
-                SendToOpenGTS();
-                break;
-            case R.id.mnuEmail:
-                SelectAndEmailFile();
                 break;
             case R.id.mnuAnnotate:
                 Annotate();
@@ -591,91 +573,23 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
     }
 
-    private void SelectAndEmailFile()
+    
+    //TODO make a menupoint and call this method on click (above in select case)
+    private void SelectAndUploadFile()
     {
-        Utilities.LogDebug("GpsMainActivity.SelectAndEmailFile");
+    	Utilities.LogDebug("GpsMainActivity.SelectAndEmailFile");
 
-        Intent settingsIntent = new Intent(getApplicationContext(), AutoEmailActivity.class);
+    	Intent settingsIntent = new Intent(getApplicationContext(), AutoUploadActivity.class);
 
-        if (!Utilities.IsEmailSetup())
-        {
+    	if (!Utilities.IsLoginSetup())
+    	{
 
-            startActivity(settingsIntent);
-        }
-        else
-        {
-            ShowFileListDialog(settingsIntent, FileSenderFactory.GetEmailSender(this));
-        }
-
-    }
-
-    private void SendToOpenGTS()
-    {
-        Utilities.LogDebug("GpsMainActivity.SendToOpenGTS");
-
-        Intent settingsIntent = new Intent(getApplicationContext(), OpenGTSActivity.class);
-
-        if (!Utilities.IsOpenGTSSetup())
-        {
-            startActivity(settingsIntent);
-        }
-        else
-        {
-            IFileSender fs = FileSenderFactory.GetOpenGTSSender(getApplicationContext(), this);
-            ShowFileListDialog(settingsIntent, fs);
-        }
-    }
-
-
-    private void UploadToGoogleDocs()
-    {
-        Utilities.LogDebug("GpsMainActivity.UploadToGoogleDocs");
-
-        if (!GDocsHelper.IsLinked(getApplicationContext()))
-        {
-            startActivity(new Intent(GpsMainActivity.this, GDocsSettingsActivity.class));
-            return;
-        }
-
-        Intent settingsIntent = new Intent(GpsMainActivity.this, GDocsSettingsActivity.class);
-        ShowFileListDialog(settingsIntent, FileSenderFactory.GetGDocsSender(getApplicationContext(), this));
-    }
-
-
-    private void UploadToDropBox()
-    {
-        Utilities.LogDebug("GpsMainActivity.UploadToDropBox");
-
-        final DropBoxHelper dropBoxHelper = new DropBoxHelper(getApplicationContext(), this);
-
-        if (!dropBoxHelper.IsLinked())
-        {
-            startActivity(new Intent("com.mendhak.gpslogger.DROPBOX_SETUP"));
-            return;
-        }
-
-        Intent settingsIntent = new Intent(GpsMainActivity.this, DropBoxAuthorizationActivity.class);
-        ShowFileListDialog(settingsIntent, FileSenderFactory.GetDropBoxSender(getApplication(), this));
-
-    }
-
-
-    /**
-     * Uploads a GPS Trace to OpenStreetMap.org.
-     */
-    private void UploadToOpenStreetMap()
-    {
-        Utilities.LogDebug("GpsMainactivity.UploadToOpenStreetMap");
-
-        if (!OSMHelper.IsOsmAuthorized(getApplicationContext()))
-        {
-            startActivity(OSMHelper.GetOsmSettingsIntent(getApplicationContext()));
-            return;
-        }
-
-        Intent settingsIntent = OSMHelper.GetOsmSettingsIntent(getApplicationContext());
-
-        ShowFileListDialog(settingsIntent, FileSenderFactory.GetOsmSender(getApplicationContext(), this));
+    		startActivity(settingsIntent);
+    	}
+    	else
+    	{
+    		ShowFileListDialog(settingsIntent, FileSenderFactory.GetServerUploadSender(getApplicationContext(), this));
+    	}
 
     }
 
