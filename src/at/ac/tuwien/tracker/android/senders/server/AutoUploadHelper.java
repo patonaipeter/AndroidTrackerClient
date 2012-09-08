@@ -157,12 +157,13 @@ class AutoSendHandler implements Runnable
             formData.add("nrOfFiles", nr);
             formData.add("username", username);
             formData.add("password", password);
-            String response = rest.postForObject(url, formData, String.class);
+            formData.add("fileType", "gpx");
             Utilities.LogInfo("Uploading files ...");
+            String response = rest.postForObject(url, formData, String.class);
 
             if (response.equals("success")){
                 helper.OnComplete();
-            }else {
+            }else{
                 helper.OnFailure();
             }
         }
