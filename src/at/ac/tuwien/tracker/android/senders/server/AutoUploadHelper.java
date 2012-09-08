@@ -154,7 +154,7 @@ class AutoSendHandler implements Runnable
             	formData.add("file"+nr, new FileSystemResource(f));
             	
             }
-            formData.add("nrOfFiles", nr);
+            formData.add("nrOfFiles", ""+nr);
             formData.add("username", username);
             formData.add("password", password);
             formData.add("fileType", "gpx");
