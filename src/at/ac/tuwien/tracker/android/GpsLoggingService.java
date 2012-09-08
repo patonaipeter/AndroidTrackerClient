@@ -302,19 +302,20 @@ public class GpsLoggingService extends Service implements IActionListener
         }
     }
 
-    protected void ForceEmailLogFile()
+    protected void ForceUploadLogFile()
     {
 
-        Utilities.LogDebug("GpsLoggingService.ForceEmailLogFile");
+        Utilities.LogDebug("GpsLoggingService.ForceUploadLogFile");
         if (AppSettings.isAutoSendEnabled() && Session.getCurrentFileName() != null && Session.getCurrentFileName().length() > 0)
         {
             if (IsMainFormVisible())
             {
+            	Utilities.LogDebug("Showing AutoUpload Progress");
                 Utilities.ShowProgress(mainServiceClient.GetActivity(), getString(R.string.autosend_sending),
                         getString(R.string.please_wait));
             }
 
-            Utilities.LogInfo("Force emailing Log File");
+            Utilities.LogInfo("Force Uploading Log File (calling sendFiles...)");
             FileSenderFactory.SendFiles(getApplicationContext(), this);
         }
     }

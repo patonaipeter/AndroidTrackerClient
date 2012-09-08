@@ -440,11 +440,11 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
             case R.id.mnuAnnotate:
                 Annotate();
                 break;
-            case R.id.mnuShare:
-                Share();
-                break;
-            case R.id.mnuEmailnow:
-                EmailNow();
+//            case R.id.mnuShare:
+//                Share();
+//                break;
+            case R.id.mnuUpload:
+                UploadNow();
                 break;
             case R.id.mnuExit:
                 loggingService.StopLogging();
@@ -456,13 +456,13 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
     }
 
 
-    private void EmailNow()
+    private void UploadNow()
     {
-        Utilities.LogDebug("GpsMainActivity.EmailNow");
+        Utilities.LogDebug("GpsMainActivity.UploadNow");
 
         if (AppSettings.isAutoSendEnabled())
         {
-            loggingService.ForceEmailLogFile();
+            loggingService.ForceUploadLogFile();
         }
         else
         {

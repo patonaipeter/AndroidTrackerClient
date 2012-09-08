@@ -205,7 +205,7 @@ public class Utilities
 
 
         AppSettings.setDebugToFile(prefs.getBoolean("debugtofile", false));
-        AppSettings.setShouldSendZipFile(prefs.getBoolean("autosend_sendzip", true));
+        AppSettings.setShouldSendZipFile(prefs.getBoolean("autosend_sendzip", false));
      
         //delete this in production
         AppSettings.setServer_password(prefs.getString("server_password", "admin"));

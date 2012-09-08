@@ -44,14 +44,15 @@ public class FileSenderFactory
     public static void SendFiles(Context applicationContext, IActionListener callback)
     {
 
-
+    	Utilities.LogDebug("FileSenderFactory.sendfiles called.");
         final String currentFileName = Session.getCurrentFileName();
-
+        
         File gpxFolder = new File(Environment.getExternalStorageDirectory(),
                 "GPSLogger");
 
         if (!gpxFolder.exists())
         {
+        	Utilities.LogDebug("ERROR: GPSFolder does not exist!");
             callback.OnFailure();
             return;
         }
@@ -111,7 +112,6 @@ public class FileSenderFactory
 //            senders.add(new OSMHelper(applicationContext, callback));
 //        }
 
-        //TODO
         if (AppSettings.isAutoSendEnabled())
         {
         		Utilities.LogInfo("new UploadHeloper intatiated");
