@@ -113,6 +113,7 @@ class AutoSendHandler implements Runnable
     File[] files;
     private final IActionListener helper;
     private URI url;
+    String uploadPath = "/sendLogFile"; 
 
     public AutoSendHandler(File[] files, IActionListener helper, URI url)
     {
@@ -131,7 +132,7 @@ class AutoSendHandler implements Runnable
         	String password = AppSettings.getServer_password();
         	
 
-        	final String sendUrl = url + "/postformdata";
+			final String sendUrl = url + uploadPath;
 			
 			HttpHeaders requestHeaders = new HttpHeaders();
 			
