@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme" >
         
          <!-- Activities  -->
-         
+         <!-- ListActivities  -->
         <activity
             android:name="at.ac.tuwien.tracker.android.MainActivity"
             android:label="@string/title_activity_main" >
@@ -35,6 +35,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+         <activity
+            android:name="at.ac.tuwien.tracker.android.listmenu.RaceActivity"
+            android:label="@string/title_activity_race" >
+             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.client.android.MainActivity" />
+        </activity>
+        
+        <activity
+            android:name="at.ac.tuwien.tracker.android.listmenu.SocialActivity"
+            android:label="@string/title_activity_social" >
+             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.client.android.MainActivity" />
+        </activity>
+        
+         <activity
+            android:name="at.ac.tuwien.tracker.android.listmenu.StatisticsActivity"
+            android:label="@string/title_activity_stats" >
+             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.client.android.MainActivity" />
+        </activity>
+        <!-- ListActivities end -->
+        
         <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.RegisterActivity"
             android:label="@string/title_activity_register" >
@@ -58,28 +84,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name="at.ac.tuwien.tracker.android.senders.dropbox.DropBoxAuthorizationActivity"
-                  android:label="DropBox"
-                  android:launchMode="singleTask">
-            <intent-filter>
-                <action android:name="at.ac.tuwien.tracker.android.DROPBOX_SETUP"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name="com.dropbox.client2.android.AuthActivity"
-                android:launchMode="singleTask"
-                android:configChanges="orientation|keyboard">
-            <intent-filter>
-                <!-- Change this to be db- followed by your app key -->
-                <data android:scheme="db-0unjsn38gpe3rwv"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 

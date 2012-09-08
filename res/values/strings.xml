@@ -14,13 +14,29 @@
         <item>Statistics</item>
         <item>Social</item>
         <item>Where was I?</item>
-    	
     </string-array>
 
+    <string-array name="race_options">
+        <item>Invite friend</item>
+        <item>Select previous track</item>
+        <item>Create new track without friends</item>
+        <item>Start</item>
+    </string-array>
+    
+    <string-array name="statistics_options">
+        <item>Overall statistics</item>
+        <item>Heatmap</item>
+        <item>Show Race on google map</item>
+    </string-array>
+     
+    <string-array name="social_options">
+        <item>Add Friends</item>
+        <item>Near to me</item>
+    </string-array>
+    
+    
+    
     <string name="title_activity_register">RegisterActivity</string>
-
-    
-    
     
     
     <!-- GPS logger -->
@@ -315,5 +331,9 @@
   	
   	<string name="autosend">Auto Send</string>
   	<string name="autosend_summary">Send data atomatically to webserver</string>
+  	
+  	<string name="title_activity_race">Lets Race! </string>
+  	<string name="title_activity_stats">Statistics </string>
+  	<string name="title_activity_social">Social Activity </string>
 
 </resources>

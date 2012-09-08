@@ -1,4 +1,4 @@
-package at.ac.tuwien.tracker.android;
+package at.ac.tuwien.tracker.android.listmenu;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -7,30 +7,24 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import at.ac.tuwien.tracker.android.listmenu.RaceActivity;
-import at.ac.tuwien.tracker.android.listmenu.SocialActivity;
-import at.ac.tuwien.tracker.android.listmenu.StatisticsActivity;
-import at.ac.tuwien.tracker.android.serverConnection.RegisterActivity;
 
 import com.example.androidtrackerclient.R;
 
-public class MainActivity extends ListActivity {
+public class RaceActivity extends ListActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
-	
+        setContentView(R.layout.activity_race);
 		
-		String[] options = getResources().getStringArray(R.array.main_options);
+		String[] options = getResources().getStringArray(R.array.race_options);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
 		setListAdapter(arrayAdapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
+        getMenuInflater().inflate(R.menu.activity_race, menu);
         return true;
     }
     
@@ -45,24 +39,19 @@ public class MainActivity extends ListActivity {
 		switch(position) 
 		{
 			case 0:
-				intent.setClass(this, RegisterActivity.class);
-				startActivity(intent);
+//				intent.setClass(this, RegisterActivity.class);
+//				startActivity(intent);
 		      	break;
 	      	case 1:
-	      		intent.setClass(this, GpsMainActivity.class);
-				startActivity(intent);
+//	      		intent.setClass(this, GpsMainActivity.class);
+//				startActivity(intent);
 		      	break;
+//			    intent.setClass(this, HttpGetActivity.class);
+//			    startActivity(intent);
+//	      		break;
 	      	case 2:
-	      		intent.setClass(this, RaceActivity.class);
-			    startActivity(intent);
-	      		break;
-	      	case 3:
-	      		intent.setClass(this, StatisticsActivity.class);
-			    startActivity(intent);
-	      		break;
-	      	case 4:
-	      		intent.setClass(this, SocialActivity.class);
-			    startActivity(intent);
+//	      		intent.setClass(this, HttpGetParametersActivity.class);
+//			    startActivity(intent);
 	      		break;
 	      	default:
 	      		break;
