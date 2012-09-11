@@ -308,6 +308,7 @@ public class GpsLoggingService extends Service implements IActionListener
         Utilities.LogDebug("GpsLoggingService.ForceUploadLogFile");
         if (AppSettings.isAutoSendEnabled() && Session.getCurrentFileName() != null && Session.getCurrentFileName().length() > 0)
         {
+        	Utilities.LogDebug("GpsLoggingService.ForceUploadLogFile");
             if (IsMainFormVisible())
             {
             	Utilities.LogDebug("Showing AutoUpload Progress");

@@ -21,19 +21,20 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import android.content.Context;
-import android.content.res.Resources;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.IActionListener;
 import at.ac.tuwien.tracker.android.common.Utilities;
@@ -134,44 +135,53 @@ class AutoSendHandler implements Runnable
 
 			final String sendUrl = url + uploadPath;
 			
-			HttpHeaders requestHeaders = new HttpHeaders();
-			
+
 			MultiValueMap<String, Object> formData;
 			formData = new LinkedMultiValueMap<String, Object>();
-			formData.add("description", "GPX Files");
+			ResponseEntity<String> response = null;
 			
-			// Sending multipart/form-data
-			requestHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
-			// Populate the MultiValueMap being serialized and headers in an HttpEntity object to use for the request
-			HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(formData, requestHeaders);
-        	
-        	RestTemplate rest  = new RestTemplate();
-        	
-        	int nr = 0;
-            for (File f : files)
-            {
-            	nr++;
-            	
-            	formData.add("file"+nr, new FileSystemResource(f));
-            	
-            }
-            formData.add("nrOfFiles", ""+nr);
-            formData.add("username", username);
-            formData.add("password", password);
-            formData.add("fileType", "gpx");
-            Utilities.LogInfo("Uploading files ...");
-            String response = rest.postForObject(url, formData, String.class);
+			//server-call for each file
+			for (File f : files)
+			{
+				Resource resource = new FileSystemResource(f);
+				formData.add("description", "GPX");
+				formData.add("username", username);
+				formData.add("password",password);
+				formData.add("file", resource);
+				formData.add("nrOfFiles", ""+files.length);	
+				formData.add("fileName", f.getName());
 
-            if (response.equals("success")){
-                helper.OnComplete();
-            }else{
-                helper.OnFailure();
-            }
+				// The URL for making the POST request
+				
+				HttpHeaders requestHeaders = new HttpHeaders();
+
+				// Sending multipart/form-data
+				requestHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+				// Populate the MultiValueMap being serialized and headers in an HttpEntity object to use for the request
+				HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<MultiValueMap<String, Object>>(formData, requestHeaders);
+
+				// Create a new RestTemplate instance
+				RestTemplate restTemplate = new RestTemplate();
+
+				// Make the network request, posting the message, expecting a String in response from the server
+				response = restTemplate.exchange(sendUrl, HttpMethod.POST, requestEntity, String.class);
+				
+			
+				
+			}
+		
+				Utilities.LogInfo(response.getBody());
+				helper.OnComplete();
+
+			
+			
         }
         catch (Exception e)
         {
             helper.OnFailure();
             Utilities.LogError("AutoSendHandler.run", e);
+            Utilities.LogInfo(e.toString());
         }
 
     }
