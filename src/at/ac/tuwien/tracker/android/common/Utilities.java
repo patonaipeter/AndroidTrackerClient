@@ -190,8 +190,7 @@ public class Utilities
 
         AppSettings.setAutoSendEnabled(prefs.getBoolean("autosend_enabled", true));
 
-//        AppSettings.setAutoEmailEnabled(prefs.getBoolean("autoemail_enabled",
-//                false));
+
 
         if (Float.valueOf(prefs.getString("autosend_frequency", "0")) >= 8f)
         {
@@ -200,14 +199,13 @@ public class Utilities
             editor.commit();
         }
 
-        AppSettings.setAutoSendDelay(Float.valueOf(prefs.getString(
-                "autosend_frequency", "0")));
+        AppSettings.setAutoSendDelay(Float.valueOf(prefs.getString("autosend_frequency", "1")));
 
 
         AppSettings.setDebugToFile(prefs.getBoolean("debugtofile", false));
         AppSettings.setShouldSendZipFile(prefs.getBoolean("autosend_sendzip", false));
      
-        //delete this in production
+        //TODO delete this in production
         AppSettings.setServer_password(prefs.getString("server_password", "admin"));
         AppSettings.setServer_username(prefs.getString("server_username", "admin"));
     }

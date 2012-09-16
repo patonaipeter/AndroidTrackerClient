@@ -20,6 +20,7 @@ package at.ac.tuwien.tracker.android.senders;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import at.ac.tuwien.tracker.android.GpsLoggingService;
 import at.ac.tuwien.tracker.android.common.Utilities;
 
 
@@ -32,9 +33,10 @@ public class AlarmReceiver extends BroadcastReceiver
     {
         try
         {
-            Utilities.LogInfo("Email alarm received");
-            Intent serviceIntent = new Intent(context.getPackageName() + ".GpsLoggingService");
-            serviceIntent.putExtra("emailAlarm", true);
+//        	Intent serviceIntent = new Intent(context, GpsLoggingService.class);
+//            Intent serviceIntent = new Intent(context.getPackageName() + ".GpsLoggingService");
+            Intent serviceIntent = new Intent("at.ac.tuwien.tracker.android.GpsLoggingService");
+            serviceIntent.putExtra("autosendAlarm", true);
             // Start the service in case it isn't already running
             context.startService(serviceIntent);
         }

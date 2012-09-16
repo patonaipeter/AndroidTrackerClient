@@ -1018,10 +1018,23 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
         if (AppSettings.shouldLogToGpx() || AppSettings.shouldLogToKml())
         {
+        	Thread t = new Thread(){
 
+				@Override
+				public void run() {
+					runOnUiThread(new Runnable(){
 
-            txtFilename.setText(getString(R.string.summary_current_filename_format,
-                    Session.getCurrentFileName()));
+						public void run() {
+							TextView txtFilename = (TextView) findViewById(R.id.txtFileName);
+							txtFilename.setText(getString(R.string.summary_current_filename_format,Session.getCurrentFileName()));
+						}
+						
+					});
+				}
+        		
+        	};
+
+          
         }
         else
         {

@@ -21,6 +21,7 @@
 
 package at.ac.tuwien.tracker.android;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -38,6 +39,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.os.SystemClock;
 import at.ac.tuwien.tracker.android.common.AppSettings;
@@ -136,12 +138,12 @@ public class GpsLoggingService extends Service implements IActionListener
             {
                 boolean stopRightNow = bundle.getBoolean("immediatestop");
                 boolean startRightNow = bundle.getBoolean("immediate");
-                boolean sendEmailNow = bundle.getBoolean("emailAlarm");
+                boolean sendNow = bundle.getBoolean("autosendAlarm");
                 boolean getNextPoint = bundle.getBoolean("getnextpoint");
 
                 Utilities.LogDebug("startRightNow - " + String.valueOf(startRightNow));
 
-                Utilities.LogDebug("emailAlarm - " + String.valueOf(sendEmailNow));
+                Utilities.LogDebug("autosendAlarm - " + String.valueOf(sendNow));
 
                 if (startRightNow)
                 {
@@ -156,7 +158,7 @@ public class GpsLoggingService extends Service implements IActionListener
                     StopLogging();
                 }
 
-                if (sendEmailNow)
+                if (sendNow)
                 {
 
                     Utilities.LogDebug("setReadyToBeAutoSent = true");
@@ -185,9 +187,16 @@ public class GpsLoggingService extends Service implements IActionListener
 
     public void OnComplete()
     {
-    	//TODO delete already uploaded files and create new
-    	//
-    	//    	ResetCurrentFileName(true);
+    	//delete already uploaded files and create new
+    	
+    	File gpxFolder = new File(Environment.getExternalStorageDirectory(), "GPSLogger");
+    	for(File f : gpxFolder.listFiles()){
+    		if(f.getName().endsWith("gpx")){
+    			f.delete();
+    		}
+    	}
+    	ResetCurrentFileName(true);
+    	
     	
         Utilities.HideProgress();
     }
