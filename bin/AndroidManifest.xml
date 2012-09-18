@@ -62,6 +62,14 @@
         <!-- ListActivities end -->
         
         <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.BasicStatisticsActivity"
+            android:label="@string/title_activity_stats" >
+             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.StatisticsActivity" />
+        </activity>
+        
+        <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.RegisterActivity"
             android:label="@string/title_activity_register" >
             <meta-data
