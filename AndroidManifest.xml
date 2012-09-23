@@ -2,30 +2,30 @@
     package="com.example.androidtrackerclient"
     android:versionCode="1"
     android:versionName="1.0" >
-    
-	<!-- SDk Version  -->
+
+    <!-- SDk Version -->
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
-    
-    <!-- Permissions  -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
-     <!-- Application Definition  -->
+    <!-- Application Definition -->
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
-         <!-- Activities  -->
-         <!-- ListActivities  -->
+
+        <!-- Activities -->
+        <!-- ListActivities -->
         <activity
             android:name="at.ac.tuwien.tracker.android.MainActivity"
             android:label="@string/title_activity_main" >
@@ -35,40 +35,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-         <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.listmenu.RaceActivity"
             android:label="@string/title_activity_race" >
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
-        
         <activity
             android:name="at.ac.tuwien.tracker.android.listmenu.SocialActivity"
             android:label="@string/title_activity_social" >
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
-        
-         <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.listmenu.StatisticsActivity"
             android:label="@string/title_activity_stats" >
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
         <!-- ListActivities end -->
-        
+
         <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.BasicStatisticsActivity"
             android:label="@string/title_activity_stats" >
-             <meta-data
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.StatisticsActivity" />
         </activity>
-        
         <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.RegisterActivity"
             android:label="@string/title_activity_register" >
@@ -76,77 +72,98 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
-        
-        <!-- GPS Logger  -->
-        
-        
-        <service android:name="at.ac.tuwien.tracker.android.GpsLoggingService">
+
+        <!-- GPS Logger -->
+
+        <service android:name="at.ac.tuwien.tracker.android.GpsLoggingService" >
             <intent-filter>
-                <action android:name="at.ac.tuwien.tracker.android.GpsLoggingService"/>
+                <action android:name="at.ac.tuwien.tracker.android.GpsLoggingService" />
             </intent-filter>
         </service>
 
-        <activity android:name="at.ac.tuwien.tracker.android.GpsMainActivity"
-                  android:label="@string/app_name"
-                  android:launchMode="singleTask" android:configChanges="locale">
+        <activity
+            android:name="at.ac.tuwien.tracker.android.GpsMainActivity"
+            android:configChanges="locale"
+            android:label="@string/app_name"
+            android:launchMode="singleTask" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="at.ac.tuwien.tracker.android.GpsSettingsActivity"
+            android:label="@string/settings_screen_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="at.ac.tuwien.tracker.android.senders.email.AutoEmailActivity"
+            android:label="@string/autoemail_title"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="at.ac.tuwien.tracker.android.AUTOEMAIL_SETUP" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="at.ac.tuwien.tracker.android.senders.server.AutoUploadActivity"
+            android:label="@string/autoupload_title"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="at.ac.tuwien.tracker.android.AUTOUPLOAD_SETUP" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".shortcuts.ShortcutCreate"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".shortcuts.ShortcutStart"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".shortcuts.ShortcutStop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
 
-        <activity android:name="at.ac.tuwien.tracker.android.GpsSettingsActivity"
-                  android:label="@string/settings_screen_name"
-                  android:screenOrientation="portrait">
-        </activity>
+        <receiver
+            android:name="at.ac.tuwien.tracker.android.StartupReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
 
-
-        <activity android:name="at.ac.tuwien.tracker.android.senders.email.AutoEmailActivity"
-                  android:label="@string/autoemail_title" android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="at.ac.tuwien.tracker.android.AUTOEMAIL_SETUP"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
-       
-        <activity android:name="at.ac.tuwien.tracker.android.senders.server.AutoUploadActivity"
-                  android:label="@string/autoupload_title" android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <action android:name="at.ac.tuwien.tracker.android.AUTOUPLOAD_SETUP"/>
-            </intent-filter>
-        </activity>
-        
-        <activity android:name=".shortcuts.ShortcutCreate" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".shortcuts.ShortcutStart" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".shortcuts.ShortcutStop" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-            </intent-filter>
-        </activity>
-        
-        <receiver android:enabled="true"
-                  android:name="at.ac.tuwien.tracker.android.StartupReceiver"
-                  android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
-
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-
         </receiver>
+        <receiver android:name="at.ac.tuwien.tracker.android.senders.AlarmReceiver" />
 
-        <receiver android:name="at.ac.tuwien.tracker.android.senders.AlarmReceiver"/>
-        
+        <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity"
+            android:label="@string/title_activity_add_friend" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
+        </activity>
+        <activity android:name="at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity"></activity>
     </application>
+
+        
+  
 
 </manifest>

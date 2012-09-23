@@ -6,7 +6,7 @@
 
     <!-- menu strings -->
     <string name="menu_settings">Settings</string>
-    
+
     <string-array name="main_options">
         <item>Register</item>
         <item>Basic Gps Logging</item>
@@ -15,32 +15,26 @@
         <item>Social</item>
         <item>Where was I?</item>
     </string-array>
-
     <string-array name="race_options">
         <item>Invite friend</item>
         <item>Select previous track</item>
         <item>Create new track without friends</item>
         <item>Start</item>
     </string-array>
-    
     <string-array name="statistics_options">
         <item>Overall statistics</item>
         <item>Heatmap</item>
         <item>Show Race on google map</item>
     </string-array>
-     
     <string-array name="social_options">
         <item>Add Friends</item>
         <item>Near to me</item>
     </string-array>
-    
-    
-    
+
     <string name="title_activity_register">RegisterActivity</string>
-    
-    
+
     <!-- GPS logger -->
-    
+
     <string name="settings_screen_name">GPSLogger Settings</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -48,20 +42,12 @@
     <string name="description_added">Description added to file</string>
     <string name="not_yet">Not Yet</string>
     <string name="cant_add_description_until_next_point">You can\'t add a description until the next point has been
-        logged to a file.
-    </string>
+        logged to a file.</string>
     <string name="add_description">Add a description</string>
     <string name="letters_numbers">Use only letters and numbers</string>
-
-
-
-
-
-
     <string name="menu_annotate">Annotate</string>
     <string name="menu_share">Share</string>
     <string name="menu_exit">Exit</string>
-
 
     <!-- main form labels -->
     <string name="txt_latitude">Latitude:</string>
@@ -74,10 +60,7 @@
     <string name="txt_travel_distance">Travelled:</string>
     <string name="btn_start_logging">Start Logging</string>
     <string name="btn_stop_logging">Stop Logging</string>
-
-
     <string name="gpslogger_still_running">GPSLogger is still running.</string>
-
     <string name="summary_loggingto">Logging to:</string>
     <string name="summary_loggingto_screen">screen only</string>
     <string name="summary_freq_every">Frequency:</string>
@@ -86,10 +69,6 @@
     <string name="summary_dist_regardless">maximum</string>
     <string name="summary_current_filename">File:</string>
     <string name="summary_current_filename_format">%s (in your GPSLogger folder)</string>
-
-
-
-
     <string name="sharing_location_only">Location only</string>
     <string name="sharing_pick_file">Pick a file to share</string>
     <string name="sharing_mylocation">My location</string>
@@ -103,13 +82,8 @@
     <string name="meters">&#160;meters</string>
     <string name="error">Error</string>
     <string name="error_connection">Connection Error. Please check your phone settings.</string>
-
-
-
-
     <string name="gpsprovider_unavailable">No GPS provider available. Please check your location settings and enable a
-        location provider.
-    </string>
+        location provider.</string>
     <string name="started">Started</string>
     <string name="providername_using">&#160;&#160;&#160;&#160;(Using %s)</string>
     <string name="providername_gps">GPS satellites</string>
@@ -122,11 +96,8 @@
     <string name="kilometers_per_hour">&#160;km/h</string>
     <string name="kilometers">&#160;km</string>
     <string name="unknown_direction">unknown</string>
-
     <string name="sorry">Sorry</string>
     <string name="success">Yay!</string>
-
-
     <string name="direction_roughly">Roughly %s</string>
     <string name="direction_north">North</string>
     <string name="direction_northnortheast">North by Northeast</string>
@@ -144,7 +115,6 @@
     <string name="direction_westnorthwest">West by Northwest</string>
     <string name="direction_northwest">Northwest</string>
     <string name="direction_northnorthwest">North by Northwest</string>
-
     <string name="time_onesecond">1 second</string>
     <string name="time_halfminute">&#189; minute</string>
     <string name="time_oneminute">1 minute</string>
@@ -158,7 +128,6 @@
     <string name="error_displaying">Error in displaying location info: %s</string>
     <string name="degree_symbol">&#176;</string>
 
-
     <!-- Settings activity -->
 
     <string name="settings_distance_in_feet">Distance in feet</string>
@@ -167,8 +136,7 @@
     <string name="settings_enter_meters">Enter meters(max 9999)</string>
     <string name="settings_converting_title">Converting…</string>
     <string name="settings_converting_description">Converting minimum distance units. Values above 9999 are reset to
-        9999. The settings screen will now reload.
-    </string>
+        9999. The settings screen will now reload.</string>
 
     <!-- Settings -->
     <string name="pref_logging_title">Logging details</string>
@@ -184,57 +152,34 @@
     <string name="new_file_creation_summary">Whether to create a new file once a day or each time you start.</string>
     <string name="new_file_creation_onceaday">Once a day</string>
     <string name="new_file_creation_everystart">Every time I start</string>
-
     <string name="pref_performance_title">Performance</string>
     <string name="prefer_celltower_title">Prefer celltowers</string>
     <string name="prefer_celltower_summary">Uses celltowers rather than satellites. Less accurate, but saves more
-        battery.
-    </string>
+        battery.</string>
     <string name="time_before_logging_title">Time before logging</string>
-    <string name="time_before_logging_summary">Use 0 for maximum frequency, but slower is better for battery life.
-    </string>
+    <string name="time_before_logging_summary">Use 0 for maximum frequency, but slower is better for battery life.</string>
     <string name="time_before_logging_dialog_title">Time in seconds</string>
     <string name="time_before_logging_hint">Enter seconds (max 9999)</string>
     <string name="distance_before_logging_title">Distance before logging</string>
     <string name="distance_before_logging_summary">How far to travel before logging the next point. Use 0 to log all
-        points.
-    </string>
-
+        points.</string>
     <string name="useimperial_title">Use Imperial units</string>
     <string name="useimperial_summary">Use feet, miles and pints, none of that newfangled metric stuff.</string>
     <string name="show_notification_title">Show Notification</string>
-    <string name="show_notification_summary">Displays a reminder along with coordinates in the notification bar.
-    </string>
-
-
+    <string name="show_notification_summary">Displays a reminder along with coordinates in the notification bar.</string>
     <string name="enabledisablegps_title">Enable/Disable GPS</string>
     <string name="enabledisablegps_summary">Go to the phone settings to enable or disable the providers.</string>
-
     <string name="startonbootup_title">Start on bootup</string>
     <string name="startonbootup_summary">Launch app and start logging when phone starts</string>
-
     <string name="autoemail_title">Auto Email Setup</string>
     <string name="autoemail_summary">Automatically emails the log file to an address of your choice</string>
-
-
-
-
     <string name="please_wait">Please wait.</string>
-
     <string name="autoemail_autosend">Enable emails</string>
-    <string name="autoemail_autosend_summary">Enables sending the log file to an email address of your choosing.
-    </string>
-    
-     <string name="autoupload_autosend">Enable auto upload</string>
+    <string name="autoemail_autosend_summary">Enables sending the log file to an email address of your choosing.</string>
+    <string name="autoupload_autosend">Enable auto upload</string>
     <string name="autoupload_autosend_summary">Enables sending the log file to the webserver </string>
-
-
     <string name="autoemail_target">Target email addresses</string>
-
-
     <string name="autoemail_frequency_whenistop">When I press stop</string>
-
-
     <string name="autoemail_frequency_8">After 8 hours</string>
     <string name="autoemail_frequency_6">After 6 hours</string>
     <string name="autoemail_frequency_5">After 5 hours</string>
@@ -261,79 +206,54 @@
     <string name="autoemail_test">Send a test email using the above settings</string>
     <string name="autoemail_sendingtest">Sending a test email</string>
     <string name="autoemail_testresult_success">Email was sent</string>
-
     <string name="autoemail_invalid_form">Invalid values</string>
-    <string name="autoemail_invalid_form_message">Please ensure that all of the fields have been filled in properly
-    </string>
-    
-     <string name="autoupload_invalid_form">Invalid values</string>
-    <string name="autoupload_invalid_form_message">Please ensure that all of the fields have been filled in properly
-    </string>
-
+    <string name="autoemail_invalid_form_message">Please ensure that all of the fields have been filled in properly</string>
+    <string name="autoupload_invalid_form">Invalid values</string>
+    <string name="autoupload_invalid_form_message">Please ensure that all of the fields have been filled in properly</string>
     <string name="fix_obtained">Fix obtained</string>
     <string name="started_waiting">GPS started, waiting for fix</string>
     <string name="gps_stopped">GPS paused</string>
     <string name="stopped">Stopped</string>
-
-
-
-   
-
     <string name="no_files_found">No files found, nothing to share or upload.</string>
     <string name="osm_pick_file">Pick a file to upload</string>
-
     <string name="debuglog_title">Write to debug file</string>
-    <string name="debuglog_summary">Writes debug messages to a file on the SD card. Warning: The file grows very fast.
-    </string>
-
+    <string name="debuglog_summary">Writes debug messages to a file on the SD card. Warning: The file grows very fast.</string>
     <string name="pref_logging_summary">Time, distance, file creation</string>
     <string name="pref_general_title">General Options</string>
     <string name="pref_general_summary">Startup and display options</string>
-
     <string name="btn_single_point">Log a single point</string>
-
-   
     <string name="menu_upload">Upload</string>
     <string name="email_upload">Email a file</string>
-
     <string name="autoemail_sendto_csv">Comma separated email addresses</string>
-
     <string name="autosend_enabled">Allow auto sending</string>
     <string name="autosend_enabled_summary">Allows sending the files to various targets</string>
     <string name="autosend_frequency_summary">How frequently log files should be sent</string>
     <string name="autosend_frequency">How often?</string>
-
     <string name="autosend_sendzip_title">Send zip file</string>
     <string name="autosend_sendzip_summary">Send zip file where applicable. Disable to send individual files, or if the zip option is not
-        working for you
-    </string>
+        working for you</string>
     <string name="autosend_targets_category">Auto Send Targets</string>
     <string name="menu_email_now">Auto Send Now</string>
     <string name="autosend_sending">Auto sending</string>
     <string name="summary_autosend">Auto send:</string>
-
     <string name="pref_autosend_title">Auto send, and upload</string>
     <string name="pref_autosend_summary">Share and upload options</string>
     <string name="shortcut_start">Start</string>
     <string name="shortcut_stop">Stop</string>
     <string name="shortcut_pickaction">Pick an action</string>
-
-  
     <string name="autoupload_title">Auto Upload Settings</string>
     <string name="autoupload_targets_category">Auto Upload Target(s)</string>
     <string name="autoupload_summary">Settings for auto upload GPS data to Webserver</string>
-    
-  	<string name="placehodler">Placeholders string</string>
-  	<string name="server_username_title">Server Username</string>
-  	<string name="server_username_description">Set the Login name that is registered on the web server</string>
-  	<string name="server_password_title">Server Password</string>
-  	<string name="server_password_description">Set the Login password that is registered o the Webserver</string>
-  	
-  	<string name="autosend">Auto Send</string>
-  	<string name="autosend_summary">Send data atomatically to webserver</string>
-  	
-  	<string name="title_activity_race">Lets Race! </string>
-  	<string name="title_activity_stats">Statistics </string>
-  	<string name="title_activity_social">Social Activity </string>
+    <string name="placehodler">Placeholders string</string>
+    <string name="server_username_title">Server Username</string>
+    <string name="server_username_description">Set the Login name that is registered on the web server</string>
+    <string name="server_password_title">Server Password</string>
+    <string name="server_password_description">Set the Login password that is registered o the Webserver</string>
+    <string name="autosend">Auto Send</string>
+    <string name="autosend_summary">Send data atomatically to webserver</string>
+    <string name="title_activity_race">Lets Race! </string>
+    <string name="title_activity_stats">Statistics </string>
+    <string name="title_activity_social">Social Activity </string>
+    <string name="title_activity_add_friend">Add Friend</string>
 
 </resources>
