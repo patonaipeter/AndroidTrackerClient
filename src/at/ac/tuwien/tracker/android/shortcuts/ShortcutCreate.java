@@ -22,8 +22,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.androidtrackerclient.R;
+import at.ac.tuwien.tracker.android.R;
 
 public class ShortcutCreate extends Activity
 {

@@ -67,8 +67,6 @@ import at.ac.tuwien.tracker.android.senders.FileSenderFactory;
 import at.ac.tuwien.tracker.android.senders.IFileSender;
 import at.ac.tuwien.tracker.android.senders.server.AutoUploadActivity;
 
-import com.example.androidtrackerclient.R;
-
 public class GpsMainActivity extends Activity implements OnCheckedChangeListener,
         IGpsLoggerServiceClient, View.OnClickListener, IActionListener
 {

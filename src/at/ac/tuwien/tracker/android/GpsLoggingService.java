@@ -51,8 +51,6 @@ import at.ac.tuwien.tracker.android.loggers.IFileLogger;
 import at.ac.tuwien.tracker.android.senders.AlarmReceiver;
 import at.ac.tuwien.tracker.android.senders.FileSenderFactory;
 
-import com.example.androidtrackerclient.R;
-
 public class GpsLoggingService extends Service implements IActionListener
 {
     private static NotificationManager gpsNotifyManager;

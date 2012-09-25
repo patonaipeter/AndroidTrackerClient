@@ -9,11 +9,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity;
 import at.ac.tuwien.tracker.android.serverConnection.FriendRequestsActivity;
-
-import com.example.androidtrackerclient.R;
 
 public class SocialActivity extends ListActivity {
 

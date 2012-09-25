@@ -11,8 +11,7 @@ import at.ac.tuwien.tracker.android.listmenu.RaceActivity;
 import at.ac.tuwien.tracker.android.listmenu.SocialActivity;
 import at.ac.tuwien.tracker.android.listmenu.StatisticsActivity;
 import at.ac.tuwien.tracker.android.serverConnection.RegisterActivity;
-
-import com.example.androidtrackerclient.R;
+import at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps;
 
 public class MainActivity extends ListActivity {
 
@@ -63,6 +62,10 @@ public class MainActivity extends ListActivity {
 	      	case 4:
 	      		intent.setClass(this, SocialActivity.class);
 			    startActivity(intent);
+	      		break;
+	      	case 5:
+	      		intent.setClass(this, HelloGoogleMaps.class);
+	      		startActivity(intent);
 	      		break;
 	      	default:
 	      		break;

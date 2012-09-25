@@ -1,19 +1,3 @@
-/*
-*    This file is part of GPSLogger for Android.
-*
-*    GPSLogger for Android is free software: you can redistribute it and/or modify
-*    it under the terms of the GNU General Public License as published by
-*    the Free Software Foundation, either version 2 of the License, or
-*    (at your option) any later version.
-*
-*    GPSLogger for Android is distributed in the hope that it will be useful,
-*    but WITHOUT ANY WARRANTY; without even the implied warranty of
-*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*    GNU General Public License for more details.
-*
-*    You should have received a copy of the GNU General Public License
-*    along with GPSLogger for Android.  If not, see <http://www.gnu.org/licenses/>.
-*/
 
 package at.ac.tuwien.tracker.android.senders.server;
 
@@ -35,12 +19,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import android.content.Context;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.IActionListener;
 import at.ac.tuwien.tracker.android.common.Utilities;
 import at.ac.tuwien.tracker.android.senders.IFileSender;
-
-import com.example.androidtrackerclient.R;
 
 public class AutoUploadHelper implements IActionListener, IFileSender
 {

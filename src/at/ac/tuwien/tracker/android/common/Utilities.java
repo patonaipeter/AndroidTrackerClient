@@ -39,8 +39,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
-import com.example.androidtrackerclient.R;
+import at.ac.tuwien.tracker.android.R;
 
 public class Utilities
 {

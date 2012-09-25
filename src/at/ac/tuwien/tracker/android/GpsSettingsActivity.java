@@ -31,8 +31,6 @@ import android.preference.PreferenceScreen;
 import android.util.Log;
 import at.ac.tuwien.tracker.android.common.Utilities;
 
-import com.example.androidtrackerclient.R;
-
 public class GpsSettingsActivity extends PreferenceActivity
 {
 

@@ -15,8 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.androidtrackerclient.R;
+import at.ac.tuwien.tracker.android.R;
 
 public class RegisterActivity extends Activity {
 

@@ -7,8 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.example.androidtrackerclient.R;
+import at.ac.tuwien.tracker.android.R;
 
 public class RaceActivity extends ListActivity {
 

@@ -15,14 +15,13 @@ import org.springframework.web.client.RestTemplate;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
 import at.ac.tuwien.tracker.android.serverConnection.adapters.MsgAdapter;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.MsgDTO;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.MsgListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncListActivity;
-
-import com.example.androidtrackerclient.R;
 
 public class FriendRequestsActivity extends AbstractAsyncListActivity {
 

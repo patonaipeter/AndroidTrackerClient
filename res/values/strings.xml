@@ -258,6 +258,7 @@
     <string name="title_activity_social">Social Activity </string>
     <string name="title_activity_add_friend">Add Friend</string>
     <string name="title_friendrequests">Accept/Deny Friend Requests</string>
+    <string name="title_wherewasi">Retrieve past location</string>
     
 
 </resources>

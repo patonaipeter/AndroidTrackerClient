@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androidtrackerclient"
+    package="at.ac.tuwien.tracker.android"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
+    
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -24,6 +25,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+    	<uses-library android:name="com.google.android.maps"/>
+    
         <!-- Activities -->
         <!-- ListActivities -->
         <activity
@@ -168,6 +171,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
         </activity>
+        
+         <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.features.WhereWasIActivity"
+            android:label="@string/title_wherewasi" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.client.android.MainActivity" />
+        </activity>
+        
+         <activity android:name="at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps"
+             	   android:label="MAPS"
+             	   android:theme="@android:style/Theme.NoTitleBar">
+         </activity>
+         
     </application>
 
         

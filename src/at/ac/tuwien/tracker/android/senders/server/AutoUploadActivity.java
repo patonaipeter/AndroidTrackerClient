@@ -10,12 +10,11 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.IActionListener;
 import at.ac.tuwien.tracker.android.common.IMessageBoxCallback;
 import at.ac.tuwien.tracker.android.common.Utilities;
-
-import com.example.androidtrackerclient.R;
 
 public class AutoUploadActivity extends PreferenceActivity implements
         OnPreferenceChangeListener, IMessageBoxCallback, IActionListener,

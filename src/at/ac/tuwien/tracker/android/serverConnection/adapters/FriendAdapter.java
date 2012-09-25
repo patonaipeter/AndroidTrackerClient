@@ -18,15 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
 import at.ac.tuwien.tracker.android.common.Utilities;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
-
-import com.example.androidtrackerclient.R;
 
 public class FriendAdapter extends BaseAdapter {
 	

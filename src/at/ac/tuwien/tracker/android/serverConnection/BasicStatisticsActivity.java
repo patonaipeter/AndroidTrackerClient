@@ -19,13 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.StatisticsDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncActivity;
-
-import com.example.androidtrackerclient.R;
 
 public class BasicStatisticsActivity extends AbstractAsyncActivity {
 

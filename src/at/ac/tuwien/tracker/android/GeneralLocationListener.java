@@ -27,8 +27,6 @@ import android.location.LocationProvider;
 import android.os.Bundle;
 import at.ac.tuwien.tracker.android.common.Utilities;
 
-import com.example.androidtrackerclient.R;
-
 class GeneralLocationListener implements LocationListener, GpsStatus.Listener
 {
 

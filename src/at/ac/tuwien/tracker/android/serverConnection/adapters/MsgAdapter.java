@@ -21,12 +21,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
 import at.ac.tuwien.tracker.android.common.Utilities;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.MsgDTO;
-
-import com.example.androidtrackerclient.R;
 
 public class MsgAdapter extends BaseAdapter {
 	
