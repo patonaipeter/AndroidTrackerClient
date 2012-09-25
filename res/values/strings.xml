@@ -29,6 +29,8 @@
     <string-array name="social_options">
         <item>Add Friends</item>
         <item>Near to me</item>
+        <item>Friendrequests</item>
+        <!-- <item>Messages</item> -->
     </string-array>
 
     <string name="title_activity_register">RegisterActivity</string>
@@ -255,5 +257,7 @@
     <string name="title_activity_stats">Statistics </string>
     <string name="title_activity_social">Social Activity </string>
     <string name="title_activity_add_friend">Add Friend</string>
+    <string name="title_friendrequests">Accept/Deny Friend Requests</string>
+    
 
 </resources>

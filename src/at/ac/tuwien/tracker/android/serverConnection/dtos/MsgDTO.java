@@ -6,15 +6,15 @@ import org.simpleframework.xml.Root;
 @Root(name="msgdto")
 public class MsgDTO {
 
-	@Element
+	@Element(required=false)
 	private Integer id;
-	@Element
+	@Element(required=false)
 	private String text;
-	@Element
+	@Element(required=false)
 	private String sender;
-	@Element
+	@Element(required=false)
 	private Integer senderId;
-	@Element
+	@Element(required=false)
 	private Long sentDate;
 	public Integer getId() {
 		return id;

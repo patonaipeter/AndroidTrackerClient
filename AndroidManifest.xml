@@ -160,7 +160,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
         </activity>
-        <activity android:name="at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity"></activity>
+        
+         <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.FriendRequestsActivity"
+            android:label="@string/title_friendrequests" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
+        </activity>
     </application>
 
         

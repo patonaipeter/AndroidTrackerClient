@@ -2,12 +2,16 @@ package at.ac.tuwien.tracker.android.listmenu;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity;
+import at.ac.tuwien.tracker.android.serverConnection.FriendRequestsActivity;
 
 import com.example.androidtrackerclient.R;
 
@@ -17,6 +21,11 @@ public class SocialActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social);
+        
+        //TODO delete this in production
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        AppSettings.setServer_password(prefs.getString("server_password", "admin"));
+        AppSettings.setServer_username(prefs.getString("server_username", "admin"));
 		
 		String[] options = getResources().getStringArray(R.array.social_options);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
@@ -51,8 +60,8 @@ public class SocialActivity extends ListActivity {
 //			    startActivity(intent);
 //	      		break;
 	      	case 2:
-//	      		intent.setClass(this, HttpGetParametersActivity.class);
-//			    startActivity(intent);
+	      		intent.setClass(this, FriendRequestsActivity.class);
+			    startActivity(intent);
 	      		break;
 	      	default:
 	      		break;

@@ -16,14 +16,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import at.ac.tuwien.tracker.android.common.AppSettings;
-import at.ac.tuwien.tracker.android.serverConnection.adapters.FriendAdapter;
-import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
-import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
+import at.ac.tuwien.tracker.android.common.Constants;
+import at.ac.tuwien.tracker.android.serverConnection.adapters.MsgAdapter;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.MsgDTO;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.MsgListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncListActivity;
 
 import com.example.androidtrackerclient.R;
 
-public class AddFriendActivity extends AbstractAsyncListActivity {
+public class FriendRequestsActivity extends AbstractAsyncListActivity {
 
 	//***************************************
     // Activity methods
@@ -47,14 +48,14 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 	//***************************************
     // Private methods
     //*************************************** 
-	private void refreshStates(List<UserDTO> users) 
+	private void refreshStates(List<MsgDTO> msgs) 
 	{	
-		if (users == null) 
+		if (msgs == null) 
 		{
 			return;
 		}
 		
-		FriendAdapter adapter = new FriendAdapter(this, users);
+		MsgAdapter adapter = new MsgAdapter(this, msgs);
 		setListAdapter(adapter);
 	}
 	
@@ -62,7 +63,7 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 	//***************************************
     // Private classes
     //***************************************
-	private class DownloadStatesTask extends AsyncTask<Void, Void, List<UserDTO>> 
+	private class DownloadStatesTask extends AsyncTask<Void, Void, List<MsgDTO>> 
 	{	
 		@Override
 		protected void onPreExecute() 
@@ -72,13 +73,13 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 		}
 		
 		@Override
-		protected List<UserDTO> doInBackground(Void... params) 
+		protected List<MsgDTO> doInBackground(Void... params) 
 		{
 			try 
 			{
 				
 				
-				final String url = getString(R.string.base_uri) + "/listusers";
+				final String url = getString(R.string.base_uri) + Constants.listfriendrequests;
 
 				// Set the Accept header for "application/json" or "application/xml"
 				HttpHeaders requestHeaders = new HttpHeaders();
@@ -100,11 +101,11 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 				RestTemplate restTemplate = new RestTemplate();
 
 				// Perform the HTTP GET request
-				ResponseEntity<UserListDTO> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, UserListDTO.class);
+				ResponseEntity<MsgListDTO> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, MsgListDTO.class);
 								
 				// Return the state from the ResponseEntity
-				UserListDTO liste = responseEntity.getBody();
-				return liste.getUserList();
+				MsgListDTO liste = responseEntity.getBody();
+				return liste.getMsgList();
 				
 	
 			} 
@@ -117,7 +118,7 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 		}
 		
 		@Override
-		protected void onPostExecute(List<UserDTO> result) 
+		protected void onPostExecute(List<MsgDTO> result) 
 		{
 			// hide the progress indicator when the network request is complete
 			dismissProgressDialog();

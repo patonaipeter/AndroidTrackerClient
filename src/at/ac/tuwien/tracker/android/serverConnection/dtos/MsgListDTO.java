@@ -7,9 +7,17 @@ import org.simpleframework.xml.Root;
 @Root(name="msglistdto")
 public class MsgListDTO {
 
-	private List<MsgDTO> msgList;
-
 	@ElementList(inline=true)
+	private List<MsgDTO> msgList;
+	public MsgListDTO() {
+		
+	}
+
+	public MsgListDTO(List<MsgDTO> msgList) {
+		super();
+		this.msgList = msgList;
+	}
+
 	public List<MsgDTO> getMsgList() {
 		return msgList;
 	}
