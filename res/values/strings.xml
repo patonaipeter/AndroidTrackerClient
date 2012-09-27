@@ -259,6 +259,7 @@
     <string name="title_activity_add_friend">Add Friend</string>
     <string name="title_friendrequests">Accept/Deny Friend Requests</string>
     <string name="title_wherewasi">Retrieve past location</string>
+    <string name="title_listNearUsers">Retrieve past location</string>
     <string name="set_date">Set Date</string>
     <string name="set_time">Set Time</string>
     <string name="time_text">Set Date and Time: </string>

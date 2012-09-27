@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.ErrorManager;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -32,8 +31,6 @@ import android.widget.Toast;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
-import at.ac.tuwien.tracker.android.common.Session;
-import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncActivity;
 
 public class WhereWasIActivity extends AbstractAsyncActivity{

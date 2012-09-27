@@ -180,6 +180,14 @@
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
         
+          <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.features.ListNearUsersActivity"
+            android:label="@string/title_listNearUsers" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.client.android.MainActivity" />
+        </activity>
+        
          <activity android:name="at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps"
              	   android:label="MAPS"
              	   android:theme="@android:style/Theme.NoTitleBar">

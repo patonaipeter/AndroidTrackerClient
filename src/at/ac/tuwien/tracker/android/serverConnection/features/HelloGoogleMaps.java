@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import at.ac.tuwien.tracker.android.R;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
 import at.ac.tuwien.tracker.android.serverConnection.mapsutils.HelloItemizedOverlay;
 
 import com.google.android.maps.GeoPoint;
@@ -41,7 +42,47 @@ public class HelloGoogleMaps extends MapActivity{
 			showOneUserLocation(userlocation);
 		}
 		
+		List<UserDTO> userliste = intent.getParcelableArrayListExtra("user_list");
+		if(userliste != null && !userliste.isEmpty()){
+			showUserLocations(userliste);
+		}
 		
+		
+	}
+
+
+
+
+
+	private void showUserLocations(List<UserDTO> userliste) {
+		
+
+		MapView mapView = (MapView) findViewById(R.id.mapview);
+		mapView.setBuiltInZoomControls(true);
+
+		List<Overlay> mapOverlays = mapView.getOverlays();
+		Drawable drawable = this.getResources().getDrawable(R.drawable.usericon);
+
+		for(UserDTO user : userliste){
+
+			double longitude = user.getLastLongitude();
+			double latitude = user.getLastLatitude(); 
+			
+			HelloItemizedOverlay itemizedoverlay = new HelloItemizedOverlay(drawable, this);
+
+			MapController mapController = mapView.getController();
+			mapController.setZoom(14); 
+
+			//		    GeoPoint point = new GeoPoint(19240000,-99120000);
+			GeoPoint point = new GeoPoint((int)(longitude * 1E6), (int)(latitude * 1E6));
+
+			mapController.setCenter(point);
+
+			OverlayItem overlayitem = new OverlayItem(point, user.getUsername(), user.getEmail());
+
+			itemizedoverlay.addOverlay(overlayitem);
+			mapOverlays.add(itemizedoverlay);
+		}
 	}
 
 
