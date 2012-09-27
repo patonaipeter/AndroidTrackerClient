@@ -29,10 +29,7 @@ public class StatisticsActivity extends ListActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_stats, menu);
         
-        //TODO delete this in production
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        AppSettings.setServer_password(prefs.getString("server_password", "admin"));
-        AppSettings.setServer_username(prefs.getString("server_username", "admin"));
+     
         
         return true;
     }

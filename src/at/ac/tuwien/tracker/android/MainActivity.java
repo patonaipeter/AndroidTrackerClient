@@ -2,16 +2,20 @@ package at.ac.tuwien.tracker.android;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.listmenu.RaceActivity;
 import at.ac.tuwien.tracker.android.listmenu.SocialActivity;
 import at.ac.tuwien.tracker.android.listmenu.StatisticsActivity;
 import at.ac.tuwien.tracker.android.serverConnection.RegisterActivity;
 import at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps;
+import at.ac.tuwien.tracker.android.serverConnection.features.WhereWasIActivity;
 
 public class MainActivity extends ListActivity {
 
@@ -20,7 +24,10 @@ public class MainActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-	
+        //TODO delete this in production
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        AppSettings.setServer_password(prefs.getString("server_password", "admin"));
+        AppSettings.setServer_username(prefs.getString("server_username", "admin"));
 		
 		String[] options = getResources().getStringArray(R.array.main_options);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
@@ -64,7 +71,7 @@ public class MainActivity extends ListActivity {
 			    startActivity(intent);
 	      		break;
 	      	case 5:
-	      		intent.setClass(this, HelloGoogleMaps.class);
+	      		intent.setClass(this, WhereWasIActivity.class);
 	      		startActivity(intent);
 	      		break;
 	      	default:

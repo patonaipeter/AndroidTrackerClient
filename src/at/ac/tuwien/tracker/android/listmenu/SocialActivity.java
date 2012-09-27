@@ -21,11 +21,7 @@ public class SocialActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_social);
         
-        //TODO delete this in production
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        AppSettings.setServer_password(prefs.getString("server_password", "admin"));
-        AppSettings.setServer_username(prefs.getString("server_username", "admin"));
-		
+  		
 		String[] options = getResources().getStringArray(R.array.social_options);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
 		setListAdapter(arrayAdapter);

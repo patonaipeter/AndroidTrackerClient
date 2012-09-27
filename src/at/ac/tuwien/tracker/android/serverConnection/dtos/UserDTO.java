@@ -3,28 +3,38 @@ package at.ac.tuwien.tracker.android.serverConnection.dtos;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 @Root(name="userdto")
-public class UserDTO {
+public class UserDTO implements Parcelable {
 
 	@Element(required=false)
-	private Integer id;
+	private Integer id = 0;
 	@Element(required=false)
 	private String username;
 	@Element(required=false)
 	private String email;
 	@Element(required=false)
-	private Integer score;
+	private Integer score = 0;
 	@Element(required=false)
-	private Long register_date;
+	private Long register_date = new Long(0);
 	@Element(required=false)
-	private Long last_activity_date;
+	private Long last_activity_date = new Long(0);
 	@Element(required=false)
-	private Integer numOfFriends;
+	private Integer numOfFriends = 0;
 	@Element(required=false)
-	private Double lastLongitude;
+	private Double lastLongitude = new Double(0);
 	@Element(required=false)
-	private Double lastLatitude;
+	private Double lastLatitude = new Double(0);
 	
+	
+	
+	public UserDTO() {
+		super();
+	}
+	
+
 	public Integer getId() {
 		return id;
 	}
@@ -96,6 +106,40 @@ public class UserDTO {
 
 	public void setLastLatitude(Double lastLatitude) {
 		this.lastLatitude = lastLatitude;
+	}
+	
+	
+	 public UserDTO(Parcel source){
+         /*
+          * Reconstruct from the Parcel
+          */
+         id = source.readInt();
+         username = source.readString();
+         email = source.readString();
+         score = source.readInt();
+         numOfFriends = source.readInt();
+         register_date = source.readLong();
+         last_activity_date = source.readLong();
+         lastLongitude = source.readDouble();
+         lastLatitude = source.readDouble();
+         
+   }
+
+	public int describeContents() {
+		return 0;
+	}
+
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(id);
+		dest.writeString(username);
+		dest.writeString(email);
+		dest.writeInt(score);
+		dest.writeInt(numOfFriends);
+		dest.writeLong(register_date);
+		dest.writeLong(last_activity_date);
+		dest.writeDouble(lastLongitude);
+		dest.writeDouble(lastLatitude);
+		
 	}
 
 	
