@@ -142,7 +142,16 @@ public class UserDTO implements Parcelable {
 		
 	}
 
-	
+	public static final Parcelable.Creator<UserDTO> CREATOR = new
+			  Parcelable.Creator<UserDTO>() {
+			      public UserDTO createFromParcel(Parcel in) {
+			              return new UserDTO(in);
+			      }
+
+			      public UserDTO[] newArray(int size) {
+			              return new UserDTO[size];
+			      }
+			  };
 
 	
 }

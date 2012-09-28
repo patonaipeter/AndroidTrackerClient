@@ -106,14 +106,14 @@ public class HelloGoogleMaps extends MapActivity{
 	    HelloItemizedOverlay itemizedoverlay = new HelloItemizedOverlay(drawable, this);
 	    
 	    MapController mapController = mapView.getController();
-	    mapController.setZoom(14); 
+	    mapController.setZoom(12); 
 	    
 //	    GeoPoint point = new GeoPoint(19240000,-99120000);
 	    GeoPoint point = new GeoPoint((int)(longitude * 1E6), (int)(latitude * 1E6));
 	    
 	    mapController.setCenter(point);
 	    
-	    OverlayItem overlayitem = new OverlayItem(point, "Hola, Mundo!", "I'm in Mexico City!");
+	    OverlayItem overlayitem = new OverlayItem(point, "You were here", "");
 	    
 	    itemizedoverlay.addOverlay(overlayitem);
 	    mapOverlays.add(itemizedoverlay);

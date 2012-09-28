@@ -13,6 +13,7 @@ import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity;
 import at.ac.tuwien.tracker.android.serverConnection.FriendRequestsActivity;
+import at.ac.tuwien.tracker.android.serverConnection.features.ListNearUsersActivity;
 
 public class SocialActivity extends ListActivity {
 
@@ -48,12 +49,9 @@ public class SocialActivity extends ListActivity {
 				startActivity(intent);
 		      	break;
 	      	case 1:
-//	      		intent.setClass(this, GpsMainActivity.class);
-//				startActivity(intent);
-		      	break;
-//			    intent.setClass(this, HttpGetActivity.class);
-//			    startActivity(intent);
-//	      		break;
+			    intent.setClass(this, ListNearUsersActivity.class);
+			    startActivity(intent);
+	      		break;
 	      	case 2:
 	      		intent.setClass(this, FriendRequestsActivity.class);
 			    startActivity(intent);

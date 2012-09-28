@@ -96,12 +96,7 @@ public class WhereWasIActivity extends AbstractAsyncActivity{
         submit.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//TODO check if date set 
-				//make call
-				//give the userlist to google maps
-				
-//				showUsers(null);
+			
 				new PostMessageTask().execute();
 			}
 		});

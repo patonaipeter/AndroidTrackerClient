@@ -69,7 +69,7 @@ public class ListNearUsersActivity extends AbstractAsyncActivity{
 				// Set the Accept header for "application/json" or "application/xml"
 				HttpHeaders requestHeaders = new HttpHeaders();
 				List<MediaType> acceptableMediaTypes = new ArrayList<MediaType>();
-				acceptableMediaTypes.add(MediaType.MULTIPART_FORM_DATA);
+				acceptableMediaTypes.add(MediaType.APPLICATION_XML);
 				requestHeaders.setAccept(acceptableMediaTypes);
 				
 				String username = AppSettings.getServer_username();
@@ -81,7 +81,7 @@ public class ListNearUsersActivity extends AbstractAsyncActivity{
 				
 				requestData.add("longitude", ""+Session.getCurrentLongitude());
 				requestData.add("latitude", ""+Session.getCurrentLatitude());
-				requestData.add("radius","0,0001"); //TODO make value changeable
+				requestData.add("radius","0.1"); //TODO make value changeable
 				
 				if(!Session.isStarted()){
 					errorMsg = "GPSLogging Service is off! Server call cannot be made.";
