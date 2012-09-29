@@ -8,17 +8,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import at.ac.tuwien.tracker.android.R;
-import at.ac.tuwien.tracker.android.serverConnection.race.SelectFriendsActivity;
-import at.ac.tuwien.tracker.android.serverConnection.race.SelectJoinableRaceActivity;
 
-public class RaceActivity extends ListActivity {
+public class RaceAloneActivity extends ListActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_race);
+        setContentView(R.layout.activity_race_alone);
 		
-		String[] options = getResources().getStringArray(R.array.race_options);
+		String[] options = getResources().getStringArray(R.array.race_alone_options);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);
 		setListAdapter(arrayAdapter);
     }
@@ -40,16 +38,19 @@ public class RaceActivity extends ListActivity {
 		switch(position) 
 		{
 			case 0:
-				intent.setClass(this, RaceAloneActivity.class);
-				startActivity(intent);
+//				intent.setClass(this, RegisterActivity.class);
+//				startActivity(intent);
 		      	break;
 	      	case 1:
-			    intent.setClass(this, SelectFriendsActivity.class);
-			    startActivity(intent);
-	      		break;
+//	      		intent.setClass(this, GpsMainActivity.class);
+//				startActivity(intent);
+		      	break;
+//			    intent.setClass(this, HttpGetActivity.class);
+//			    startActivity(intent);
+//	      		break;
 	      	case 2:
-	      		intent.setClass(this, SelectJoinableRaceActivity.class);
-			    startActivity(intent);
+//	      		intent.setClass(this, HttpGetParametersActivity.class);
+//			    startActivity(intent);
 	      		break;
 	      	default:
 	      		break;

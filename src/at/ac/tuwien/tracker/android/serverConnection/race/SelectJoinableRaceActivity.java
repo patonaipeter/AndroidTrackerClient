@@ -1,4 +1,4 @@
-package at.ac.tuwien.tracker.android.serverConnection;
+package at.ac.tuwien.tracker.android.serverConnection.race;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,13 @@ import android.os.Bundle;
 import android.util.Log;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
-import at.ac.tuwien.tracker.android.serverConnection.adapters.UserAdapter;
+import at.ac.tuwien.tracker.android.common.Constants;
+import at.ac.tuwien.tracker.android.serverConnection.adapters.FriendAdapter;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncListActivity;
 
-public class AddFriendActivity extends AbstractAsyncListActivity {
+public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
 
 	//***************************************
     // Activity methods
@@ -39,21 +40,21 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 		super.onStart();
 		
 		// when this activity starts, initiate an asynchronous HTTP GET request
-		new DownloadStatesTask().execute();
+//		new DownloadStatesTask().execute();
 	}
 	
 	
 	//***************************************
     // Private methods
     //*************************************** 
-	private void refreshListe(List<UserDTO> users) 
+	private void refreshStates(List<UserDTO> users) 
 	{	
 		if (users == null) 
 		{
 			return;
 		}
 		
-		UserAdapter adapter = new UserAdapter(this, users);
+		FriendAdapter adapter = new FriendAdapter(this, users);
 		setListAdapter(adapter);
 	}
 	
@@ -77,7 +78,7 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 			{
 				
 				
-				final String url = getString(R.string.base_uri) + "/listusers";
+				final String url = getString(R.string.base_uri) + Constants.listraces;
 
 				// Set the Accept header for "application/json" or "application/xml"
 				HttpHeaders requestHeaders = new HttpHeaders();
@@ -122,7 +123,7 @@ public class AddFriendActivity extends AbstractAsyncListActivity {
 			dismissProgressDialog();
 			
 			// return the list of states
-			refreshListe(result);
+			refreshStates(result);
 		}
 	}
 

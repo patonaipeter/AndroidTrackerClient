@@ -16,11 +16,15 @@
         <item>Where was I?</item>
     </string-array>
     <string-array name="race_options">
-        <item>Invite friend</item>
-        <item>Select previous track</item>
-        <item>Create new track without friends</item>
-        <item>Start</item>
+        <item>Alone</item>
+        <item>With Friends</item>
+        <item>Join Race</item>
     </string-array>
+     <string-array name="race_alone_options">
+        <item>Record New Track</item>
+        <item>Race against Historical Race</item>
+    </string-array>
+    
     <string-array name="statistics_options">
         <item>Overall statistics</item>
         <item>Heatmap</item>
