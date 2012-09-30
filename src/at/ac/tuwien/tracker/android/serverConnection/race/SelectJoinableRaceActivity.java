@@ -18,9 +18,9 @@ import android.util.Log;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
-import at.ac.tuwien.tracker.android.serverConnection.adapters.FriendAdapter;
-import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
-import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
+import at.ac.tuwien.tracker.android.serverConnection.adapters.RaceAdapter;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.RaceDTO;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.RaceListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncListActivity;
 
 public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
@@ -40,21 +40,21 @@ public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
 		super.onStart();
 		
 		// when this activity starts, initiate an asynchronous HTTP GET request
-//		new DownloadStatesTask().execute();
+		new DownloadRacesTask().execute();
 	}
 	
 	
 	//***************************************
     // Private methods
     //*************************************** 
-	private void refreshStates(List<UserDTO> users) 
+	private void refreshListe(List<RaceDTO> users) 
 	{	
 		if (users == null) 
 		{
 			return;
 		}
 		
-		FriendAdapter adapter = new FriendAdapter(this, users);
+		RaceAdapter adapter = new RaceAdapter(this, users);
 		setListAdapter(adapter);
 	}
 	
@@ -62,7 +62,7 @@ public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
 	//***************************************
     // Private classes
     //***************************************
-	private class DownloadStatesTask extends AsyncTask<Void, Void, List<UserDTO>> 
+	private class DownloadRacesTask extends AsyncTask<Void, Void, List<RaceDTO>> 
 	{	
 		@Override
 		protected void onPreExecute() 
@@ -72,13 +72,13 @@ public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
 		}
 		
 		@Override
-		protected List<UserDTO> doInBackground(Void... params) 
+		protected List<RaceDTO> doInBackground(Void... params) 
 		{
 			try 
 			{
 				
 				
-				final String url = getString(R.string.base_uri) + Constants.listraces;
+				final String url = getString(R.string.base_uri) + Constants.listjoinableraces;
 
 				// Set the Accept header for "application/json" or "application/xml"
 				HttpHeaders requestHeaders = new HttpHeaders();
@@ -100,11 +100,11 @@ public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
 				RestTemplate restTemplate = new RestTemplate();
 
 				// Perform the HTTP GET request
-				ResponseEntity<UserListDTO> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, UserListDTO.class);
+				ResponseEntity<RaceListDTO> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, RaceListDTO.class);
 								
 				// Return the state from the ResponseEntity
-				UserListDTO liste = responseEntity.getBody();
-				return liste.getUserList();
+				RaceListDTO liste = responseEntity.getBody();
+				return liste.getRaceList();
 				
 	
 			} 
@@ -117,13 +117,13 @@ public class SelectJoinableRaceActivity extends AbstractAsyncListActivity {
 		}
 		
 		@Override
-		protected void onPostExecute(List<UserDTO> result) 
+		protected void onPostExecute(List<RaceDTO> result) 
 		{
 			// hide the progress indicator when the network request is complete
 			dismissProgressDialog();
 			
 			// return the list of states
-			refreshStates(result);
+			refreshListe(result);
 		}
 	}
 

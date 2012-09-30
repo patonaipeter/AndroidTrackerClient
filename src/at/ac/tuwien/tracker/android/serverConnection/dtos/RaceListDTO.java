@@ -6,10 +6,20 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 @Root(name="racelistdto")
 public class RaceListDTO {
-
-	private List<RaceDTO> raceList;
-
 	@ElementList(inline=true)
+	private List<RaceDTO> raceList;
+	
+	
+
+	public RaceListDTO() {
+	}
+
+	public RaceListDTO(List<RaceDTO> raceList) {
+		super();
+		this.raceList = raceList;
+	}
+
+
 	public List<RaceDTO> getRaceList() {
 		return raceList;
 	}

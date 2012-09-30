@@ -67,38 +67,7 @@ public class SelectFriendsActivity extends AbstractAsyncListActivity {
 		
 	}
 	
-//	   @Override
-//	    public boolean onCreateOptionsMenu(Menu menu)
-//	    {
-//	        MenuInflater inflater = getMenuInflater();
-//	        inflater.inflate(R.menu.racemenu, menu);
-//
-//	        return true;
-//
-//	    }
-//
-//	    /**
-//	     * Called when one of the menu items is selected.
-//	     */
-//	    public boolean onOptionsItemSelected(MenuItem item)
-//	    {
-//
-//	        int itemId = item.getItemId();
-//	        Utilities.LogInfo("Option item selected - " + String.valueOf(item.getTitle()));
-//
-//	        switch (itemId)
-//	        {
-//	        
-//	            case R.id.mnuStart:
-//	            	if(!adapter.getSelectedUsers().isEmpty()){
-//	            		new InitRaceTask(adapter.getSelectedUsers()).execute();
-//	            	}
-//	     
-//	                break;
-//	        
-//	        }
-//	        return false;
-//	    }
+
 	
 	
 	//***************************************

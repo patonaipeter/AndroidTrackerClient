@@ -5,14 +5,26 @@ import org.simpleframework.xml.Root;
 
 @Root(name="racedto")
 public class RaceDTO {
-	@Element
+	@Element(required=false)
 	private Integer id;
-	@Element
+	@Element(required=false)
 	private String name;
-	@Element
+	@Element(required=false)
 	private Long date;
-	@Element
+	@Element(required=false)
 	private Double length;
+	
+	
+	
+	public RaceDTO() {
+		
+	}
+	public RaceDTO(Integer id, String name, Long date, Double length) {
+		this.id = id;
+		this.name = name;
+		this.date = date;
+		this.length = length;
+	}
 	public Integer getId() {
 		return id;
 	}
