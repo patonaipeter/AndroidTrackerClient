@@ -20,11 +20,10 @@
         <item>With Friends</item>
         <item>Join Race</item>
     </string-array>
-     <string-array name="race_alone_options">
+    <string-array name="race_alone_options">
         <item>Record New Track</item>
         <item>Race against Historical Race</item>
     </string-array>
-    
     <string-array name="statistics_options">
         <item>Overall statistics</item>
         <item>Heatmap</item>
@@ -267,6 +266,6 @@
     <string name="set_date">Set Date</string>
     <string name="set_time">Set Time</string>
     <string name="time_text">Set Date and Time: </string>
-    
+    <string name="title_activity_race_main">Race</string>
 
 </resources>

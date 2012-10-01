@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import at.ac.tuwien.tracker.android.R;
+import at.ac.tuwien.tracker.android.serverConnection.RaceMainActivity;
 
 public class RaceAloneActivity extends ListActivity {
 
@@ -38,8 +39,9 @@ public class RaceAloneActivity extends ListActivity {
 		switch(position) 
 		{
 			case 0:
-//				intent.setClass(this, RegisterActivity.class);
-//				startActivity(intent);
+				intent.putExtra("alone", true);
+				intent.setClass(this, RaceMainActivity.class);
+				startActivity(intent);
 		      	break;
 	      	case 1:
 //	      		intent.setClass(this, GpsMainActivity.class);

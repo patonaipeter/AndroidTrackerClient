@@ -7,7 +7,6 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="15" />
-    
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -24,9 +23,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="com.google.android.maps" />
 
-    	<uses-library android:name="com.google.android.maps"/>
-    
         <!-- Activities -->
         <!-- ListActivities -->
         <activity
@@ -45,31 +43,27 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
-         <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.listmenu.RaceAloneActivity"
             android:label="@string/title_activity_race" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.RaceActivity" />
         </activity>
-        
-         
-           <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.race.SelectFriendsActivity"
             android:label="@string/title_activity_race" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.RaceActivity" />
         </activity>
-        
-            <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.race.SelectJoinableRaceActivity"
             android:label="@string/title_activity_race" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.RaceActivity" />
         </activity>
-         
         <activity
             android:name="at.ac.tuwien.tracker.android.listmenu.SocialActivity"
             android:label="@string/title_activity_social" >
@@ -188,39 +182,36 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
         </activity>
-        
-         <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.FriendRequestsActivity"
             android:label="@string/title_friendrequests" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
         </activity>
-        
-         <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.features.WhereWasIActivity"
             android:label="@string/title_wherewasi" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
-        
-          <activity
+        <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.features.ListNearUsersActivity"
             android:label="@string/title_listNearUsers" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
-        
-         <activity android:name="at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps"
-             	   android:label="MAPS"
-             	   android:theme="@android:style/Theme.NoTitleBar">
-         </activity>
-         
+        <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps"
+            android:label="MAPS"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="at.ac.tuwien.tracker.android.serverConnection.RaceMainActivity"
+            android:label="@string/title_activity_race_main" >
+        </activity>
     </application>
-
-        
-  
 
 </manifest>

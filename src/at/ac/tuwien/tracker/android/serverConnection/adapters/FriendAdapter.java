@@ -20,7 +20,7 @@ public class FriendAdapter extends BaseAdapter {
 	private List<UserDTO> users;
 	private Context context;
 	
-	private List<UserDTO> selectedUsers = new ArrayList<UserDTO>();
+	private ArrayList<UserDTO> selectedUsers = new ArrayList<UserDTO>();
 	
 	public FriendAdapter(Context context, List<UserDTO> users) {
 		this.mInflater = LayoutInflater.from(context);
@@ -76,7 +76,7 @@ public class FriendAdapter extends BaseAdapter {
 		return view;
 	}
 
-	public List<UserDTO> getSelectedUsers() {
+	public ArrayList<UserDTO> getSelectedUsers() {
 		return selectedUsers;
 	}
 	

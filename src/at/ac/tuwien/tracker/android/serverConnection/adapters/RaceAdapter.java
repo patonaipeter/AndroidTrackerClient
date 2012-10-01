@@ -3,6 +3,7 @@ package at.ac.tuwien.tracker.android.serverConnection.adapters;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import at.ac.tuwien.tracker.android.R;
+import at.ac.tuwien.tracker.android.serverConnection.RaceMainActivity;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.RaceDTO;
 
 public class RaceAdapter extends BaseAdapter {
@@ -52,12 +54,14 @@ public class RaceAdapter extends BaseAdapter {
         {
             public void onClick(View v)
             {                   
-                Toast t = Toast.makeText(context, "Sending Friend Request to User: "+race.getName(), Toast.LENGTH_SHORT);
-                t.show();
-                
-                //TODO
-                //save race id
-                //start race service
+    			
+        		Intent intent = new Intent(context,RaceMainActivity.class);
+
+            	intent.putExtra("alone", false);
+    			intent.putExtra("raceid", race.getId());
+    			
+            	context.startActivity(intent);
+
                 
             }
         });

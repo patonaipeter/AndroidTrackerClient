@@ -1,5 +1,6 @@
 package at.ac.tuwien.tracker.android.serverConnection.race;
 
+import java.io.ObjectOutputStream.PutField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +13,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,7 +24,7 @@ import android.widget.TextView;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
-import at.ac.tuwien.tracker.android.common.Utilities;
+import at.ac.tuwien.tracker.android.serverConnection.RaceMainActivity;
 import at.ac.tuwien.tracker.android.serverConnection.adapters.FriendAdapter;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
@@ -83,6 +82,20 @@ public class SelectFriendsActivity extends AbstractAsyncListActivity {
 		adapter = new FriendAdapter(this, users);
 		setListAdapter(adapter);
 		
+	}
+	
+	
+	private void showRace(String result, ArrayList<UserDTO> selectedUsers) {
+		
+		
+		
+		Intent intent = new Intent(this.getApplicationContext(),RaceMainActivity.class);
+		intent.putExtra("alone", false);
+		intent.putParcelableArrayListExtra("users", selectedUsers);
+		intent.putExtra("raceid", Integer.parseInt(result));
+		
+		startActivity(intent);
+			
 	}
 	
 	
@@ -157,10 +170,10 @@ public class SelectFriendsActivity extends AbstractAsyncListActivity {
 	
 	private class InitRaceTask extends AsyncTask<Void, Void, String> 
 	{	
-		List<UserDTO> selectedUsers;
+		ArrayList<UserDTO> selectedUsers;
 		String racename;
 		
-		public InitRaceTask(List<UserDTO> selectedUsers, String string) {
+		public InitRaceTask(ArrayList<UserDTO> selectedUsers, String string) {
 			this.selectedUsers = selectedUsers;
 			this.racename = string;
 		}
@@ -228,7 +241,11 @@ public class SelectFriendsActivity extends AbstractAsyncListActivity {
 			dismissProgressDialog();
 			
 			//start race Intent+Service
+			
+			showRace(result,selectedUsers);
 		}
-	}
 
+		
+	}
+	
 }
