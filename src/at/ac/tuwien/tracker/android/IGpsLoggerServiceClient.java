@@ -20,7 +20,7 @@ package at.ac.tuwien.tracker.android;
 import android.app.Activity;
 import android.location.Location;
 
-interface IGpsLoggerServiceClient
+public interface IGpsLoggerServiceClient
 {
 
 

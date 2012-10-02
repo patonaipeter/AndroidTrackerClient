@@ -45,6 +45,7 @@ public class Session extends Application
     private static boolean readyToBeAutoSent = false;
     private static boolean allowDescription = true;
     private static boolean isSinglePointMode = false;
+    private static boolean raceBoundToService = false;
 
     public static boolean isSinglePointMode()
     {
@@ -365,5 +366,10 @@ public class Session extends Application
     {
         Session.allowDescription = allowDescription;
     }
+
+	public static void setRaceBoundToService(boolean b) {
+		raceBoundToService = b;
+		
+	}
 
 }

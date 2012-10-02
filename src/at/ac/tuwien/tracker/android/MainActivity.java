@@ -28,6 +28,7 @@ public class MainActivity extends ListActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         AppSettings.setServer_password(prefs.getString("server_password", "admin"));
         AppSettings.setServer_username(prefs.getString("server_username", "admin"));
+        
 		
 		String[] options = getResources().getStringArray(R.array.main_options);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, options);

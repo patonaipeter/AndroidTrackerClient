@@ -179,7 +179,7 @@ public class AppSettings extends Application
     /**
      * @param minimumSeconds the minimumSeconds to set
      */
-    static void setMinimumSeconds(int minimumSeconds)
+    public static void setMinimumSeconds(int minimumSeconds)
     {
         AppSettings.minimumSeconds = minimumSeconds;
     }

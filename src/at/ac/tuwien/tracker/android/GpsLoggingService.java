@@ -1,23 +1,3 @@
-/*
-*    This file is part of GPSLogger for Android.
-*
-*    GPSLogger for Android is free software: you can redistribute it and/or modify
-*    it under the terms of the GNU General Public License as published by
-*    the Free Software Foundation, either version 2 of the License, or
-*    (at your option) any later version.
-*
-*    GPSLogger for Android is distributed in the hope that it will be useful,
-*    but WITHOUT ANY WARRANTY; without even the implied warranty of
-*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*    GNU General Public License for more details.
-*
-*    You should have received a copy of the GNU General Public License
-*    along with GPSLogger for Android.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
-//TODO: Simplify email logic (too many methods)
-//TODO: Allow messages in IActionListener callback methods
-//TODO: Handle case where a fix is not found and GPS gives up - restart alarm somehow?
 
 package at.ac.tuwien.tracker.android;
 
@@ -50,6 +30,7 @@ import at.ac.tuwien.tracker.android.loggers.FileLoggerFactory;
 import at.ac.tuwien.tracker.android.loggers.IFileLogger;
 import at.ac.tuwien.tracker.android.senders.AlarmReceiver;
 import at.ac.tuwien.tracker.android.senders.FileSenderFactory;
+import at.ac.tuwien.tracker.android.serverConnection.RaceMainActivity;
 
 public class GpsLoggingService extends Service implements IActionListener
 {
@@ -58,10 +39,8 @@ public class GpsLoggingService extends Service implements IActionListener
 
     private final IBinder mBinder = new GpsLoggingBinder();
     private static IGpsLoggerServiceClient mainServiceClient;
+    private static RaceMainActivity raceMainActivity;
 
-    // ---------------------------------------------------
-    // Helpers and managers
-    // ---------------------------------------------------
     private GeneralLocationListener gpsLocationListener;
     private GeneralLocationListener towerLocationListener;
     LocationManager gpsLocationManager;
@@ -71,6 +50,7 @@ public class GpsLoggingService extends Service implements IActionListener
 
     AlarmManager nextPointAlarmManager;
 
+    
     // ---------------------------------------------------
 
     @Override
@@ -110,6 +90,7 @@ public class GpsLoggingService extends Service implements IActionListener
     {
         Utilities.LogWarning("GpsLoggingService is being destroyed by Android OS.");
         mainServiceClient = null;
+        raceMainActivity = null;
         super.onDestroy();
     }
 
@@ -322,6 +303,10 @@ public class GpsLoggingService extends Service implements IActionListener
                 Utilities.ShowProgress(mainServiceClient.GetActivity(), getString(R.string.autosend_sending),
                         getString(R.string.please_wait));
             }
+            if(IsRaceActivityVisible()){
+            	Utilities.ShowProgress(raceMainActivity.GetActivity(), getString(R.string.autosend_sending),
+                        getString(R.string.please_wait));
+            }
 
             Utilities.LogInfo("Force Uploading Log File (calling sendFiles...)");
             FileSenderFactory.SendFiles(getApplicationContext(), this);
@@ -365,7 +350,7 @@ public class GpsLoggingService extends Service implements IActionListener
     /**
      * Resets the form, resets file name if required, reobtains preferences
      */
-    protected void StartLogging()
+    public void StartLogging()
     {
         Utilities.LogDebug("GpsLoggingService.StartLogging");
         Session.setAddNewTrackSegment(true);
@@ -644,6 +629,10 @@ public class GpsLoggingService extends Service implements IActionListener
         {
             mainServiceClient.OnStatusMessage(status);
         }
+        
+        if(IsRaceActivityVisible()){
+        	raceMainActivity.OnStatusMessage(status);
+        }
     }
 
     /**
@@ -657,6 +646,11 @@ public class GpsLoggingService extends Service implements IActionListener
         {
             mainServiceClient.OnFatalMessage(getString(messageId));
         }
+        
+        if(IsRaceActivityVisible()){
+        	raceMainActivity.OnFatalMessage(getString(messageId));
+        }
+        
     }
 
     /**
@@ -678,6 +672,10 @@ public class GpsLoggingService extends Service implements IActionListener
         if (IsMainFormVisible())
         {
             mainServiceClient.OnStopLogging();
+        }
+        
+        if(IsRaceActivityVisible()){
+        	raceMainActivity.OnStopLogging();
         }
     }
 
@@ -758,6 +756,10 @@ public class GpsLoggingService extends Service implements IActionListener
         if (IsMainFormVisible())
         {
             mainServiceClient.OnLocationUpdate(loc);
+        }
+        
+        if(IsRaceActivityVisible()){
+        	raceMainActivity.OnLocationUpdate(loc);
         }
     }
 
@@ -851,6 +853,10 @@ public class GpsLoggingService extends Service implements IActionListener
         {
             mainServiceClient.OnSatelliteCount(count);
         }
+        
+        if(IsRaceActivityVisible()){
+        	raceMainActivity.OnSatelliteCount(count);
+        }
     }
 
 
@@ -858,6 +864,17 @@ public class GpsLoggingService extends Service implements IActionListener
     {
         return mainServiceClient != null;
     }
+    
+    private boolean IsRaceActivityVisible()
+    {
+        return raceMainActivity != null;
+    }
+    
+
+	public static void SetRaceClient(RaceMainActivity raceMain) {
+		raceMainActivity = raceMain;
+		
+	}
 
 
 }
