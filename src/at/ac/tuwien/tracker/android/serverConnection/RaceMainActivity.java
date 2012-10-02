@@ -14,6 +14,9 @@ public class RaceMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_race_main);
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        
+        //set preferences
     }
 
     @Override

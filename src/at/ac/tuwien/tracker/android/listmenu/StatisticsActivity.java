@@ -2,15 +2,12 @@ package at.ac.tuwien.tracker.android.listmenu;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import at.ac.tuwien.tracker.android.R;
-import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.serverConnection.BasicStatisticsActivity;
 
 public class StatisticsActivity extends ListActivity {
