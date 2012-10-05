@@ -3,6 +3,7 @@ package at.ac.tuwien.tracker.android.serverConnection;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +21,12 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +35,9 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import at.ac.tuwien.tracker.android.GpsLoggingService;
 import at.ac.tuwien.tracker.android.IGpsLoggerServiceClient;
 import at.ac.tuwien.tracker.android.R;
@@ -35,8 +45,10 @@ import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
 import at.ac.tuwien.tracker.android.common.Session;
 import at.ac.tuwien.tracker.android.common.Utilities;
+import at.ac.tuwien.tracker.android.serverConnection.adapters.RacingUserAdapter;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.RaceStatisticsDTO;
+import at.ac.tuwien.tracker.android.serverConnection.dtos.RaceStatisticsListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
-import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
 
 public class RaceMainActivity extends Activity implements IGpsLoggerServiceClient {
 	
@@ -48,8 +60,15 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 	private ArrayList<UserDTO> selectedUsers;
 	private int raceId;
 	private boolean isAlone;
-	
+	private List<Integer> colors;
 	private RaceState raceState;
+	
+	//drawings
+	private ImageView img;
+	private Bitmap bmp; 
+	private Canvas canvas;
+	private Paint strokePaint;
+	private Paint filledPaint;
 	
 	private final ServiceConnection gpsServiceConnection = new ServiceConnection()
 	{
@@ -106,9 +125,78 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
         StartAndBindService();
         
         
+        //define the order of colors		
+        colors = new ArrayList<Integer>();
+        colors.add(Color.CYAN);
+        colors.add(Color.BLUE);
+        colors.add(Color.GREEN);
+        colors.add(Color.MAGENTA);
+        colors.add(Color.RED);
+        
+        
+     
+        
+        
+        
+        initDrawings();
+        drawCircle();
+		
     }
 
-    @Override
+    private void initDrawings() {
+		img = (ImageView) findViewById(R.id.imageView1);
+		bmp = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
+		canvas = new Canvas(bmp);
+   
+		strokePaint = new Paint();
+		strokePaint.setColor(Color.BLACK);
+		strokePaint.setStrokeWidth(5);
+		strokePaint.setStyle(Style.STROKE);	
+		
+		filledPaint = new Paint();
+//		filledPaint.setColor(Color.GREEN);
+		filledPaint.setStyle(Style.FILL);
+	}
+
+	private void drawCircle() {
+		
+		canvas.drawCircle(150, 150, 140, strokePaint);
+
+		
+	}
+	
+	private void refreshPaint(){
+		img.setBackgroundColor(Color.WHITE);
+		img.setBackgroundDrawable(new BitmapDrawable(bmp));
+	}
+
+	public void showReceivedUpdate(RaceStatisticsListDTO result) {
+		System.out.println(""+result.getRaceName());
+		
+		ListView listView = (ListView) findViewById(R.id.racinguserlist);
+        List<String> values = new ArrayList<String>();
+      
+		int i = 0;
+		for(RaceStatisticsDTO dto : result.getStats()){
+			System.out.println("Username: "+dto.getUsername()+"Distance: "+dto.getDistance()+"AVG: "+dto.getAvgSpeed());
+			int iLap = (int) (dto.getDistance()/10);
+			values.add(""+dto.getUsername()+" "+iLap+". "+"Lap"+" AvgSpeed: "+ dto.getAvgSpeed());
+			
+			//coordinates: 150+ sin (x)* r; 150-cos(x)*r 
+			int r = 140;
+			double angle = (dto.getDistance()-iLap)*36;
+			float cx = (float) (150+ (Math.sin(angle)*r));
+			float cy = (float) (150- (Math.cos(angle)*r));
+			filledPaint.setColor(colors.get(i));
+			canvas.drawCircle(cx, cy, r, filledPaint);
+			if(i<5)	i++; else i=0;
+		}  
+		
+		refreshPaint();
+		RacingUserAdapter adapter = new RacingUserAdapter(this, values, colors);
+        listView.setAdapter(adapter); 
+	}
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_race_main, menu);
         return true;
@@ -135,54 +223,46 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
         // Now bind to service
         bindService(serviceIntent, gpsServiceConnection, Context.BIND_AUTO_CREATE);
         Session.setRaceBoundToService(true);
-        
-       
     }
     
-
-	public void OnStatusMessage(String message) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void OnFatalMessage(String message) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void OnLocationUpdate(Location loc) {
 		System.out.println("LOCATION UPDATE IN RACEACTIVITYYYYY!!!!!");
 		Utilities.LogDebug("LOCATION UPDATE IN RACEACTIVITYYYYY!!!!!");
-		//TODO
 		//send location to webserver
 		raceState.sendUpdate(raceId,loc.getLongitude(),loc.getLatitude(),loc.getAltitude());
 		//retrieve update from webserver
 		raceState.receiveUpdate();
 	}
-
+	public void OnStopLogging() {
+		loggingService.StopLogging();
+	}
+	
+	
+	public Activity GetActivity() {
+		return this;
+	}
+	
 	public void OnSatelliteCount(int count) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void ClearForm() {
 		// TODO Auto-generated method stub
-		
-	}
-
-	public void OnStopLogging() {
-		loggingService.StopLogging();
-	}
-
-	public Activity GetActivity() {
-		return this;
 	}
 
 	public void onFileName(String newFileName) {
 		// TODO Auto-generated method stub
-		
+	}
+	
+	public void OnStatusMessage(String message) {
+		// TODO Auto-generated method stub
 	}
 
+	public void OnFatalMessage(String message) {
+		// TODO Auto-generated method stub
+	}
+
+	//-----------------------------------------------Private Classes -------------------------------------------------------//
 	private abstract class RaceState{
 		
 		void sendUpdate(Integer raceId, Double longitude, Double latitude, Double altitude){
@@ -192,9 +272,6 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 		}
 		abstract void receiveUpdate();
 	}
-	
-	
-	//-----------------------------------------------Private Classes -------------------------------------------------------//
 	
 	private class AloneRace extends RaceState{
 
@@ -219,7 +296,7 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 
 		@Override
 		void receiveUpdate() {
-			new ReceiveUpdateTask().execute();
+			new ReceiveUpdateTask(raceId).execute();
 			
 		}
 		
@@ -299,8 +376,14 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 		}
 	}
 	
-	private class ReceiveUpdateTask extends AsyncTask<Void, Void, List<UserDTO>> 
+	private class ReceiveUpdateTask extends AsyncTask<Void, Void, RaceStatisticsListDTO> 
 	{	
+		
+		Integer raceId;
+		public ReceiveUpdateTask(Integer raceId) {
+			this.raceId = raceId;
+		}
+
 		@Override
 		protected void onPreExecute() 
 		{
@@ -309,13 +392,13 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 		}
 		
 		@Override
-		protected List<UserDTO> doInBackground(Void... params) 
+		protected RaceStatisticsListDTO doInBackground(Void... params) 
 		{
 			try 
 			{
 				
 				
-				final String url = getString(R.string.base_uri) + Constants.listfriends;
+				final String url = getString(R.string.base_uri) + Constants.updateracestatus;
 
 				// Set the Accept header for "application/json" or "application/xml"
 				HttpHeaders requestHeaders = new HttpHeaders();
@@ -326,44 +409,46 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 				String username = AppSettings.getServer_username();
 				String password = AppSettings.getServer_password();
 
-				MultiValueMap<String, String> credentials = new LinkedMultiValueMap<String, String>();
-				credentials.add("username", username);
-				credentials.add("password", password);
+				MultiValueMap<String, String> requestData = new LinkedMultiValueMap<String, String>();
+				requestData.add("username", username);
+				requestData.add("password", password);
+				requestData.add("raceid", ""+raceId);
 
 				// Populate the headers in an HttpEntity object to use for the request
-				HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(credentials, requestHeaders);
+				HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(requestData, requestHeaders);
 														
 				// Create a new RestTemplate instance
 				RestTemplate restTemplate = new RestTemplate();
 
 				// Perform the HTTP GET request
-				ResponseEntity<UserListDTO> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, UserListDTO.class);
+				ResponseEntity<RaceStatisticsListDTO> responseEntity = restTemplate.exchange(url, HttpMethod.POST, requestEntity, RaceStatisticsListDTO.class);
 								
 				// Return the state from the ResponseEntity
-				UserListDTO liste = responseEntity.getBody();
-				return liste.getUserList();
+				RaceStatisticsListDTO liste = responseEntity.getBody();
+				return liste;
 				
 	
 			} 
 			catch(Exception e) 
 			{
-//				Log.e(TAG, e.getMessage(), e);
+				Utilities.LogError("receiveUpdate", e);
 			} 
 			
 			return null;
 		}
 		
 		@Override
-		protected void onPostExecute(List<UserDTO> result) 
+		protected void onPostExecute(RaceStatisticsListDTO result) 
 		{
 			// hide the progress indicator when the network request is complete
 //			dismissProgressDialog();
 			
 			// return the list of states
 //			refreshStates(result);
+			showReceivedUpdate(result);
+			
 		}
 	}
-	
 	
 	private class InitRaceTask extends AsyncTask<Void, Void, String> 
 	{	
@@ -441,4 +526,7 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 
 		
 	}
+
+
+	
 }
