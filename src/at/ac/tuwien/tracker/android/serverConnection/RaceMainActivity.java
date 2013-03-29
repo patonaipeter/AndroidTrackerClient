@@ -188,7 +188,7 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 			float cx = (float) (150+ (Math.sin(angle)*r));
 			float cy = (float) (150- (Math.cos(angle)*r));
 			filledPaint.setColor(colors.get(i));
-			canvas.drawCircle(cx, cy, r, filledPaint);
+			canvas.drawCircle(cx, cy, 10, filledPaint);
 			if(i<5)	i++; else i=0;
 		}  
 		

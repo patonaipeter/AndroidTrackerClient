@@ -94,24 +94,24 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
             GpsLoggingService.SetServiceClient(GpsMainActivity.this);
 
 
-            Button buttonSinglePoint = (Button) findViewById(R.id.buttonSinglePoint);
-
-            buttonSinglePoint.setOnClickListener(GpsMainActivity.this);
-
-            if (Session.isStarted())
-            {
-                if (Session.isSinglePointMode())
-                {
-                    SetMainButtonEnabled(false);
-                }
-                else
-                {
-                    SetMainButtonChecked(true);
-                    SetSinglePointButtonEnabled(false);
-                }
-
-                DisplayLocationInfo(Session.getCurrentLocationInfo());
-            }
+////            Button buttonSinglePoint = (Button) findViewById(R.id.buttonSinglePoint);
+//
+//            buttonSinglePoint.setOnClickListener(GpsMainActivity.this);
+//
+//            if (Session.isStarted())
+//            {
+//                if (Session.isSinglePointMode())
+//                {
+//                    SetMainButtonEnabled(false);
+//                }
+//                else
+//                {
+//                    SetMainButtonChecked(true);
+//                    SetSinglePointButtonEnabled(false);
+//                }
+//
+//                DisplayLocationInfo(Session.getCurrentLocationInfo());
+//            }
 
             // Form setup - toggle button, display existing location info
             ToggleButton buttonOnOff = (ToggleButton) findViewById(R.id.buttonOnOff);
@@ -258,8 +258,8 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
     public void SetSinglePointButtonEnabled(boolean enabled)
     {
-        Button buttonSinglePoint = (Button) findViewById(R.id.buttonSinglePoint);
-        buttonSinglePoint.setEnabled(enabled);
+//        Button buttonSinglePoint = (Button) findViewById(R.id.buttonSinglePoint);
+//        buttonSinglePoint.setEnabled(enabled);
     }
 
     public void SetMainButtonEnabled(boolean enabled)

@@ -52,23 +52,23 @@ public class GpsSettingsActivity extends PreferenceActivity
 
 
         prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        boolean useImperial = prefs.getBoolean("useImperial", false);
+//        boolean useImperial = prefs.getBoolean("useImperial", false);
 
         EditTextPreference distanceBeforeLogging = (EditTextPreference) findPreference("distance_before_logging");
 
-        if (useImperial)
-        {
-            distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_feet);
-            distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_feet);
-        }
-        else
-        {
+//        if (useImperial)
+//        {
+//            distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_feet);
+//            distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_feet);
+//        }
+//        else
+//        {
             distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_meters);
             distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_meters);
-        }
+//        }
 
-        CheckBoxPreference imperialCheckBox = (CheckBoxPreference) findPreference("useImperial");
-        imperialCheckBox.setOnPreferenceChangeListener(new ImperialPreferenceChangeListener(prefs, distanceBeforeLogging));
+//        CheckBoxPreference imperialCheckBox = (CheckBoxPreference) findPreference("useImperial");
+//        imperialCheckBox.setOnPreferenceChangeListener(new ImperialPreferenceChangeListener(prefs, distanceBeforeLogging));
 
 
         Preference enableDisablePref = findPreference("enableDisableGps");
@@ -116,93 +116,93 @@ public class GpsSettingsActivity extends PreferenceActivity
 //    }
 
 
-    private class ImperialPreferenceChangeListener implements Preference.OnPreferenceChangeListener
-    {
-        EditTextPreference distanceBeforeLogging;
-        SharedPreferences prefs;
-
-        public ImperialPreferenceChangeListener(SharedPreferences prefs, EditTextPreference distanceBeforeLogging)
-        {
-            this.prefs = prefs;
-            this.distanceBeforeLogging = distanceBeforeLogging;
-        }
-
-        public boolean onPreferenceChange(Preference preference, final Object newValue)
-        {
-
-            Utilities.ShowProgress(GpsSettingsActivity.this, getString(R.string.settings_converting_title),
-                    getString(R.string.settings_converting_description));
-
-            new Thread()
-            {
-
-                public void run()
-                {
-
-                    try
-                    {
-                        sleep(3000); // Give user time to read the message
-                    }
-                    catch (InterruptedException e)
-                    {
-
-                        Log.e("Settings", e.getMessage());
-
-                    }
-
-                    boolean useImp = Boolean.parseBoolean(newValue.toString());
-
-                    String minimumDistanceString = prefs.getString("distance_before_logging", "0");
-
-                    int minimumDistance;
-
-                    if (minimumDistanceString != null && minimumDistanceString.length() > 0)
-                    {
-                        minimumDistance = Integer.valueOf(minimumDistanceString);
-                    }
-                    else
-                    {
-                        minimumDistance = 0;
-                    }
-
-                    SharedPreferences.Editor editor = prefs.edit();
-
-                    if (useImp)
-                    {
-                        distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_feet);
-                        distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_feet);
-
-                        minimumDistance = Utilities.MetersToFeet(minimumDistance);
-
-                    }
-                    else
-                    {
-                        minimumDistance = Utilities.FeetToMeters(minimumDistance);
-                        distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_meters);
-                        distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_meters);
-
-                    }
-
-                    if (minimumDistance >= 9999)
-                    {
-                        minimumDistance = 9999;
-                    }
-
-                    editor.putString("distance_before_logging", String.valueOf(minimumDistance));
-
-                    editor.commit();
-
-                    handler.post(updateResults);
-                    Utilities.HideProgress();
-                }
-            }.start();
-
-            return true;
-        }
-
-    }
-
-  
+//    private class ImperialPreferenceChangeListener implements Preference.OnPreferenceChangeListener
+//    {
+//        EditTextPreference distanceBeforeLogging;
+//        SharedPreferences prefs;
+//
+//        public ImperialPreferenceChangeListener(SharedPreferences prefs, EditTextPreference distanceBeforeLogging)
+//        {
+//            this.prefs = prefs;
+//            this.distanceBeforeLogging = distanceBeforeLogging;
+//        }
+//
+//        public boolean onPreferenceChange(Preference preference, final Object newValue)
+//        {
+//
+//            Utilities.ShowProgress(GpsSettingsActivity.this, getString(R.string.settings_converting_title),
+//                    getString(R.string.settings_converting_description));
+//
+//            new Thread()
+//            {
+//
+//                public void run()
+//                {
+//
+//                    try
+//                    {
+//                        sleep(3000); // Give user time to read the message
+//                    }
+//                    catch (InterruptedException e)
+//                    {
+//
+//                        Log.e("Settings", e.getMessage());
+//
+//                    }
+//
+//                    boolean useImp = Boolean.parseBoolean(newValue.toString());
+//
+//                    String minimumDistanceString = prefs.getString("distance_before_logging", "0");
+//
+//                    int minimumDistance;
+//
+//                    if (minimumDistanceString != null && minimumDistanceString.length() > 0)
+//                    {
+//                        minimumDistance = Integer.valueOf(minimumDistanceString);
+//                    }
+//                    else
+//                    {
+//                        minimumDistance = 0;
+//                    }
+//
+//                    SharedPreferences.Editor editor = prefs.edit();
+//
+//                    if (useImp)
+//                    {
+//                        distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_feet);
+//                        distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_feet);
+//
+//                        minimumDistance = Utilities.MetersToFeet(minimumDistance);
+//
+//                    }
+//                    else
+//                    {
+//                        minimumDistance = Utilities.FeetToMeters(minimumDistance);
+//                        distanceBeforeLogging.setDialogTitle(R.string.settings_distance_in_meters);
+//                        distanceBeforeLogging.getEditText().setHint(R.string.settings_enter_meters);
+//
+//                    }
+//
+//                    if (minimumDistance >= 9999)
+//                    {
+//                        minimumDistance = 9999;
+//                    }
+//
+//                    editor.putString("distance_before_logging", String.valueOf(minimumDistance));
+//
+//                    editor.commit();
+//
+//                    handler.post(updateResults);
+//                    Utilities.HideProgress();
+//                }
+//            }.start();
+//
+//            return true;
+//        }
+//
+//    }
+//
+//  
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus)
