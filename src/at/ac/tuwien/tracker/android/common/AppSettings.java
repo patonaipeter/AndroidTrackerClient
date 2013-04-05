@@ -40,7 +40,7 @@ public class AppSettings extends Application
 
     private static boolean debugToFile;
     private static int minimumDistance;
-    private static boolean shouldSendZipFile;
+    private static boolean shouldSendZipFile = false;
 
     private static String server_username;
     private static String server_password;

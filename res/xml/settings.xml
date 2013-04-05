@@ -74,7 +74,7 @@
                         android:entries="@array/autosend_frequencies" android:defaultValue="0"
                         android:entryValues="@array/autosend_values"/>
 
-        <CheckBoxPreference android:key="autosend_sendzip" android:defaultValue="true"
+        <CheckBoxPreference android:key="autosend_sendzip" android:defaultValue="false"
                             android:title="@string/autosend_sendzip_title"
                             android:summary="@string/autosend_sendzip_summary"/>
 
