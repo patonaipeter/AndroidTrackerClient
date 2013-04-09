@@ -140,6 +140,7 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
         
         initDrawings();
         drawCircle();
+        refreshPaint();
 		
     }
 
@@ -171,6 +172,11 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 	}
 
 	public void showReceivedUpdate(RaceStatisticsListDTO result) {
+		
+		initDrawings();
+	    drawCircle();
+		
+		
 		System.out.println(""+result.getRaceName());
 		
 		ListView listView = (ListView) findViewById(R.id.racinguserlist);
@@ -179,12 +185,12 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
 		int i = 0;
 		for(RaceStatisticsDTO dto : result.getStats()){
 			System.out.println("Username: "+dto.getUsername()+"Distance: "+dto.getDistance()+"AVG: "+dto.getAvgSpeed());
-			int iLap = (int) (dto.getDistance()/10);
+			int iLap = (int) dto.getDistance().intValue();
 			values.add(""+dto.getUsername()+" "+iLap+". "+"Lap"+" AvgSpeed: "+ dto.getAvgSpeed());
 			
 			//coordinates: 150+ sin (x)* r; 150-cos(x)*r 
 			int r = 140;
-			double angle = (dto.getDistance()-iLap)*36;
+			double angle = (dto.getDistance()-iLap)*(2*Math.PI);
 			float cx = (float) (150+ (Math.sin(angle)*r));
 			float cy = (float) (150- (Math.cos(angle)*r));
 			filledPaint.setColor(colors.get(i));
