@@ -1,9 +1,9 @@
 package at.ac.tuwien.tracker.android.serverConnection;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -35,7 +35,6 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import at.ac.tuwien.tracker.android.GpsLoggingService;
@@ -184,9 +183,11 @@ public class RaceMainActivity extends Activity implements IGpsLoggerServiceClien
       
 		int i = 0;
 		for(RaceStatisticsDTO dto : result.getStats()){
+			DecimalFormat df = new DecimalFormat("#.##");
+			
 			System.out.println("Username: "+dto.getUsername()+"Distance: "+dto.getDistance()+"AVG: "+dto.getAvgSpeed());
 			int iLap = (int) dto.getDistance().intValue();
-			values.add(""+dto.getUsername()+" "+iLap+". "+"Lap"+" AvgSpeed: "+ dto.getAvgSpeed());
+			values.add(""+dto.getUsername()+" "+iLap+". "+"Lap"+" AvgSpeed: "+ df.format((double) dto.getAvgSpeed()) + " Km/h");
 			
 			//coordinates: 150+ sin (x)* r; 150-cos(x)*r 
 			int r = 140;
