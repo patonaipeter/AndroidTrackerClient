@@ -16,13 +16,9 @@
         <item>Where was I?</item>
     </string-array>
     <string-array name="race_options">
-        <item>Alone</item>
+        <item>Browse Races</item>
         <item>With Friends</item>
         <item>Join Race</item>
-    </string-array>
-    <string-array name="race_alone_options">
-        <item>Record New Track</item>
-        <item>Race against Historical Race</item>
     </string-array>
     <string-array name="statistics_options">
         <item>Overall statistics</item>

@@ -44,7 +44,7 @@
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
         <activity
-            android:name="at.ac.tuwien.tracker.android.listmenu.RaceAloneActivity"
+            android:name=".listmenu.BrowseRaceActivity"
             android:label="@string/title_activity_race" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -78,6 +78,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.client.android.MainActivity" />
         </activity>
+        
+         <activity
+            android:name="at.ac.tuwien.tracker.android.ui.race.browse.SelectParticipantActivity"
+            android:label="@string/title_activity_race" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.RaceActivity" />
+        </activity>
+        
+          <activity
+            android:name="at.ac.tuwien.tracker.android.ui.race.browse.SelectRaceActivity"
+            android:label="@string/title_activity_race" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.RaceActivity" />
+        </activity>
+        
         <!-- ListActivities end -->
 
         <activity
@@ -205,6 +222,11 @@
         </activity>
         <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.features.HelloGoogleMaps"
+            android:label="MAPS"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="at.ac.tuwien.tracker.android.ui.race.googlemaps.RaceMap"
             android:label="MAPS"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>

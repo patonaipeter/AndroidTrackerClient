@@ -18,6 +18,9 @@ public class Constants {
 	public static final String wherewasi = "/wherewasi";
 	public static final String addracelocation = "/addracelocation";
 	public static final String updateracestatus = "/updateracestatus";
+	public static final String browseraces = "/browseraces";
+	public static final String getracepoints = "/getracepoints";
+	public static final String browseparticipants = "/browseparticipants";
 	public static final String packagename = "at.ac.tuwien.tracker.android";
 	
 }

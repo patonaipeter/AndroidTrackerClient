@@ -10,6 +10,7 @@ import android.widget.ListView;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.serverConnection.race.SelectFriendsActivity;
 import at.ac.tuwien.tracker.android.serverConnection.race.SelectJoinableRaceActivity;
+import at.ac.tuwien.tracker.android.ui.race.browse.SelectRaceActivity;
 
 public class RaceActivity extends ListActivity {
 
@@ -40,7 +41,7 @@ public class RaceActivity extends ListActivity {
 		switch(position) 
 		{
 			case 0:
-				intent.setClass(this, RaceAloneActivity.class);
+				intent.setClass(this, SelectRaceActivity.class);
 				startActivity(intent);
 		      	break;
 	      	case 1:
