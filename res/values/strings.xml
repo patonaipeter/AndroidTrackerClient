@@ -29,6 +29,8 @@
         <item>Add Friends</item>
         <item>Near to me</item>
         <item>Friendrequests</item>
+        <item>Send Message</item>
+        <item>Notifications</item>
         <!-- <item>Messages</item> -->
     </string-array>
 

@@ -95,6 +95,13 @@
                 android:value="at.ac.tuwien.tracker.android.listmenu.RaceActivity" />
         </activity>
         
+            <activity
+            android:name="at.ac.tuwien.tracker.android.ui.message.SelectReceiverActivity"
+            android:label="@string/title_activity_race" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
+        </activity>
         <!-- ListActivities end -->
 
         <activity

@@ -79,6 +79,12 @@ public class FriendAdapter extends BaseAdapter {
 	public ArrayList<UserDTO> getSelectedUsers() {
 		return selectedUsers;
 	}
+
+
+
+	
+
+	
 	
 	
 
