@@ -23,7 +23,7 @@
     <string-array name="statistics_options">
         <item>Overall statistics</item>
         <item>Heatmap</item>
-        <item>Show Race on google map</item>
+        <item>Toplist</item>
     </string-array>
     <string-array name="social_options">
         <item>Add Friends</item>

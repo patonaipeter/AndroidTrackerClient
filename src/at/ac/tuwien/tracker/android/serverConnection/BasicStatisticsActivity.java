@@ -15,10 +15,12 @@ import org.springframework.web.client.RestTemplate;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
@@ -31,36 +33,30 @@ public class BasicStatisticsActivity extends AbstractAsyncActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_empty_text);
 //        getActionBar().setDisplayHomeAsUpEnabled(true);
         
-    	final Button buttonSubmit = (Button) findViewById(R.id.submit);
-    	buttonSubmit.setOnClickListener(new View.OnClickListener() 
-			{
-            	public void onClick(View v) 
-            	{
-            		new DownloadStateTask().execute(MediaType.APPLICATION_XML);
-            	}
-			}
-		);
+        new DownloadStateTask().execute(MediaType.APPLICATION_XML);
+        
+    	
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_register, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.activity_register, menu);
+//        return true;
+//    }
 
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                NavUtils.navigateUpFromSameTask(this);
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
   
 	//***************************************
@@ -145,16 +141,19 @@ public class BasicStatisticsActivity extends AbstractAsyncActivity {
 	
 	private void showStats(StatisticsDTO stats) {
 
-		//TODO show thing in a form and provide an update button
-		// display a notification to the user with the state
-		if (stats != null)
-		{
-			Toast.makeText(this, stats.getFormattedName(), Toast.LENGTH_LONG).show();
-		}
-		else
-		{
-			Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
-		}
+		final TextView textHeader = (TextView) findViewById(R.id.textView1);
+		final TextView text2 = (TextView) findViewById(R.id.textView2);
+		final TextView text3 = (TextView) findViewById(R.id.textView3);
+		final TextView text4 = (TextView) findViewById(R.id.textView4);
+		
+		
+		textHeader.setText(stats.getName());
+		text2.setText("Num Of Races: "+stats.getNumberOfRaces());
+		text3.setText("Avg Speed"+ stats.getAvgSpeed());
+		text4.setText("Avg Speed In Race mode: "+ stats.getAvgSpeedInRaceMode() + " Distance: " + stats.getDistance() + " Distance in Race mode: "+ stats.getDistanceInRaceMode() + " " +
+				"Elevation: " + stats.getElevation());
+		
+		
 	}
     
   

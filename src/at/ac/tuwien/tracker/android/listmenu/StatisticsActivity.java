@@ -53,7 +53,7 @@ public class StatisticsActivity extends ListActivity {
 //			    startActivity(intent);
 //	      		break;
 	      	case 2:
-//	      		intent.setClass(this, HttpGetParametersActivity.class);
+//	      		intent.setClass(this, TopListActivity.class);
 //			    startActivity(intent);
 	      		break;
 	      	default:
