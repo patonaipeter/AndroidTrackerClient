@@ -16,6 +16,8 @@ public class MsgDTO {
 	private Integer senderId;
 	@Element(required=false)
 	private Long sentDate;
+	@Element(required=false)
+	private String msgType;
 	public Integer getId() {
 		return id;
 	}
@@ -45,6 +47,12 @@ public class MsgDTO {
 	}
 	public void setSentDate(Long sentDate) {
 		this.sentDate = sentDate;
+	}
+	public String getMsgType() {
+		return msgType;
+	}
+	public void setMsgType(String msgType) {
+		this.msgType = msgType;
 	}
 	
 	

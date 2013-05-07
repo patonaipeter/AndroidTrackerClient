@@ -12,6 +12,7 @@ import at.ac.tuwien.tracker.android.serverConnection.AddFriendActivity;
 import at.ac.tuwien.tracker.android.serverConnection.FriendRequestsActivity;
 import at.ac.tuwien.tracker.android.serverConnection.features.ListNearUsersActivity;
 import at.ac.tuwien.tracker.android.ui.message.SelectReceiverActivity;
+import at.ac.tuwien.tracker.android.ui.message.ShowNotificationsActivity;
 
 public class SocialActivity extends ListActivity {
 
@@ -59,7 +60,7 @@ public class SocialActivity extends ListActivity {
 	      		startActivity(intent);
 	      		break;
 	      	case 4:
-	      		intent.setClass(this, FriendRequestsActivity.class);
+	      		intent.setClass(this, ShowNotificationsActivity.class);
 	      		startActivity(intent);
 	      		break;
 	      	default:

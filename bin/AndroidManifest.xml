@@ -213,6 +213,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
         </activity>
+         <activity
+            android:name="at.ac.tuwien.tracker.android.ui.message.ShowNotificationsActivity"
+            android:label="@string/title_notifications" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.SocialActivity" />
+        </activity>
         <activity
             android:name="at.ac.tuwien.tracker.android.serverConnection.features.WhereWasIActivity"
             android:label="@string/title_wherewasi" >
