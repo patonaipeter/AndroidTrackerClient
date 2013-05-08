@@ -1,5 +1,7 @@
 package at.ac.tuwien.tracker.android.serverConnection;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,13 +148,13 @@ public class BasicStatisticsActivity extends AbstractAsyncActivity {
 		final TextView text3 = (TextView) findViewById(R.id.textView3);
 		final TextView text4 = (TextView) findViewById(R.id.textView4);
 		
-		
+		NumberFormat nf = new DecimalFormat("###.##");
 		textHeader.setText(stats.getName());
-		text2.setText("Num Of Races: "+stats.getNumberOfRaces());
-		text3.setText("Avg Speed"+ stats.getAvgSpeed());
-		text4.setText("Avg Speed In Race mode: "+ stats.getAvgSpeedInRaceMode() + " Distance: " + stats.getDistance() + " Distance in Race mode: "+ stats.getDistanceInRaceMode() + " " +
-				"Elevation: " + stats.getElevation());
-		
+		text2.setText(" Num Of Races: "+stats.getNumberOfRaces() + "\r\n Score: "+ stats.getScore());
+		text3.setText(" Avg Speed: "+ nf.format(stats.getAvgSpeed()));
+		text4.setText("Avg Speed In Race mode: "+ nf.format(stats.getAvgSpeedInRaceMode()) + " km/h \r\n Distance: " + nf.format(stats.getDistance()) + "km \r\n Distance in Race mode: "+ nf.format(stats.getDistanceInRaceMode()) + "km \r\n " +
+				"Elevation: " + nf.format(stats.getElevation())+ " m");
+		 
 		
 	}
     

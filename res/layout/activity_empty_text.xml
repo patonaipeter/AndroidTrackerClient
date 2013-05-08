@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="16dp"
-        android:text="Large Text"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="18dp"
-        android:text="TextView" />
+        android:text="" />
 
     <TextView
         android:id="@+id/textView3"
@@ -29,7 +29,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="23dp"
-        android:text="TextView" />
+        android:text="" />
 
     <TextView
         android:id="@+id/textView4"
@@ -38,6 +38,6 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView3"
         android:layout_marginTop="26dp"
-        android:text="TextView" />
+        android:text="" />
 
 </RelativeLayout>

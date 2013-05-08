@@ -38,10 +38,12 @@ public class StatisticsDTO
 	private Double avgSpeedInRaceMode;
 	@Element
 	private Integer raceWins;
+	@Element
+	private Integer score;
 	
 	public StatisticsDTO() { }
 	
-	public StatisticsDTO(String name, Double distance, Double elevation, Double avgSpeed, Integer numberOfRaces, Double distanceInRaceMode, Double avgSpeedInRaceMode, Integer raceWins)
+	public StatisticsDTO(String name, Double distance, Double elevation, Double avgSpeed, Integer numberOfRaces, Double distanceInRaceMode, Double avgSpeedInRaceMode, Integer raceWins, Integer score)
 	{
 		this.name = name;
 		this.distance = distance;
@@ -51,6 +53,7 @@ public class StatisticsDTO
 		this.distanceInRaceMode = distanceInRaceMode;
 		this.avgSpeedInRaceMode = avgSpeedInRaceMode;
 		this.raceWins = raceWins;
+		this.score = score;
 	}
 
 	public String getName() 
@@ -126,4 +129,13 @@ public class StatisticsDTO
 		return this.getName() + "Distance - (" + this.getDistance() + ")" + " AvgSpeed (" + this.getAvgSpeed() + ")" + "Overall Elevation (" + this.getElevation() + ")"
 				+ "Distance In Races (" + this.getDistanceInRaceMode() + ")" + "NumOfRaces (" + this.getNumberOfRaces() + ")";
 	}
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+	
 }
