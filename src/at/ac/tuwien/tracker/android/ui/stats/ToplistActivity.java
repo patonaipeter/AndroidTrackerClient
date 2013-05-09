@@ -1,4 +1,4 @@
-package at.ac.tuwien.tracker.android.ui.race.browse;
+package at.ac.tuwien.tracker.android.ui.stats;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,14 @@ import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.common.AppSettings;
 import at.ac.tuwien.tracker.android.common.Constants;
 import at.ac.tuwien.tracker.android.serverConnection.adapters.BrowseFriendAdapter;
+import at.ac.tuwien.tracker.android.serverConnection.adapters.ToplistUserAdapter;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserDTO;
 import at.ac.tuwien.tracker.android.serverConnection.dtos.UserListDTO;
 import at.ac.tuwien.tracker.android.serverConnection.helpers.AbstractAsyncListActivity;
 
-public class SelectParticipantActivity extends AbstractAsyncListActivity {
+public class ToplistActivity extends AbstractAsyncListActivity {
 	
-	private BrowseFriendAdapter adapter;
+	private ToplistUserAdapter adapter;
 	private Integer raceId;
 
 	//***************************************
@@ -48,7 +49,7 @@ public class SelectParticipantActivity extends AbstractAsyncListActivity {
 	{
 		super.onStart();
 		
-		new DownloadParticipantListTask().execute();
+		new ToplistRetrieval().execute();
 		
 		
 	}
@@ -66,7 +67,7 @@ public class SelectParticipantActivity extends AbstractAsyncListActivity {
 			return;
 		}
 		
-		adapter = new BrowseFriendAdapter(this, users);
+		adapter = new ToplistUserAdapter(this, users);
 		adapter.setRaceId(raceId);
 		setListAdapter(adapter);
 		
@@ -78,7 +79,7 @@ public class SelectParticipantActivity extends AbstractAsyncListActivity {
 	//***************************************
     // Private classes
     //***************************************
-	private class DownloadParticipantListTask extends AsyncTask<Void, Void, List<UserDTO>> 
+	private class ToplistRetrieval extends AsyncTask<Void, Void, List<UserDTO>> 
 	{	
 		@Override
 		protected void onPreExecute() 
@@ -94,7 +95,7 @@ public class SelectParticipantActivity extends AbstractAsyncListActivity {
 			{
 				
 				
-				final String url = getString(R.string.base_uri) + Constants.browseparticipants;
+				final String url = getString(R.string.base_uri) + Constants.toplist;
 
 				// Set the Accept header for "application/json" or "application/xml"
 				HttpHeaders requestHeaders = new HttpHeaders();
@@ -102,13 +103,7 @@ public class SelectParticipantActivity extends AbstractAsyncListActivity {
 				acceptableMediaTypes.add(MediaType.APPLICATION_XML);
 				requestHeaders.setAccept(acceptableMediaTypes);
 
-				String username = AppSettings.getServer_username();
-				String password = AppSettings.getServer_password();
-
 				MultiValueMap<String, String> credentials = new LinkedMultiValueMap<String, String>();
-				credentials.add("username", username);
-				credentials.add("password", password);
-				credentials.add("raceid",""+raceId);
 
 				// Populate the headers in an HttpEntity object to use for the request
 				HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(credentials, requestHeaders);
