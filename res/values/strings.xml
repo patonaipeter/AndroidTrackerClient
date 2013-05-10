@@ -266,5 +266,7 @@
     <string name="set_time">Set Time</string>
     <string name="time_text">Set Date and Time: </string>
     <string name="title_activity_race_main">Race</string>
+    
+    <string name="hello">Hello World!</string>
 
 </resources>

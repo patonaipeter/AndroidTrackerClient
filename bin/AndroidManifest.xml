@@ -257,6 +257,14 @@
             android:name="at.ac.tuwien.tracker.android.serverConnection.RaceMainActivity"
             android:label="@string/title_activity_race_main" >
         </activity>
+        
+		<activity android:name="at.ac.tuwien.tracker.android.ui.stats.HeatMapActivity">
+		     <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.ac.tuwien.tracker.android.listmenu.StatisticsActivity" />
+		</activity>
+        
+        
     </application>
 
 </manifest>

@@ -24,6 +24,7 @@ public class Constants {
 	public static final String sendmessage = "/sendusermessage";
 	public static final String statistics = "/statistics";
 	public static final String toplist = "/toplist";
+	public static final String heatmap = "/heatmap";
 	public static final String packagename = "at.ac.tuwien.tracker.android";
 	
 }

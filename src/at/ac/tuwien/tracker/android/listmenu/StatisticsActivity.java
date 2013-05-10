@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import at.ac.tuwien.tracker.android.R;
 import at.ac.tuwien.tracker.android.serverConnection.BasicStatisticsActivity;
+import at.ac.tuwien.tracker.android.ui.stats.HeatMapActivity;
 import at.ac.tuwien.tracker.android.ui.stats.ToplistActivity;
 
 public class StatisticsActivity extends ListActivity {
@@ -47,12 +48,9 @@ public class StatisticsActivity extends ListActivity {
 				startActivity(intent);
 		      	break;
 	      	case 1:
-//	      		intent.setClass(this, GpsMainActivity.class);
-//				startActivity(intent);
+	      		intent.setClass(this, HeatMapActivity.class);
+				startActivity(intent);
 		      	break;
-//			    intent.setClass(this, HttpGetActivity.class);
-//			    startActivity(intent);
-//	      		break;
 	      	case 2:
 	      		intent.setClass(this, ToplistActivity.class);
 			    startActivity(intent);
