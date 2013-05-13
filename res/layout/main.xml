@@ -87,15 +87,7 @@
                           android:padding="3dip"/>
             </TableRow>
 
-            <TableRow
-                android:layout_margin="1dip"
-                android:background="#999999" >
-
-                <TextView android:id="@+id/lblAccuracy" android:textStyle="bold"
-                          android:text="@string/txt_accuracy" android:padding="3dip"/>
-                <TextView android:id="@+id/txtAccuracy" android:gravity="left"
-                          android:padding="3dip"/>
-            </TableRow>
+           
 
             <TableRow
                 android:layout_margin="1dip"

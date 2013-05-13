@@ -654,7 +654,6 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
         TextView txtSatellites = (TextView) findViewById(R.id.txtSatellites);
         TextView txtDirection = (TextView) findViewById(R.id.txtDirection);
-        TextView txtAccuracy = (TextView) findViewById(R.id.txtAccuracy);
         TextView txtDistance = (TextView) findViewById(R.id.txtDistanceTravelled);
 
         tvLatitude.setText("");
@@ -664,7 +663,6 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
         txtSpeed.setText("");
         txtSatellites.setText("");
         txtDirection.setText("");
-        txtAccuracy.setText("");
         txtDistance.setText("");
         Session.setPreviousLocationInfo(null);
         Session.setTotalTravelled(0d);
@@ -728,7 +726,6 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
             TextView txtSatellites = (TextView) findViewById(R.id.txtSatellites);
             TextView txtDirection = (TextView) findViewById(R.id.txtDirection);
-            TextView txtAccuracy = (TextView) findViewById(R.id.txtAccuracy);
             TextView txtTravelled = (TextView) findViewById(R.id.txtDistanceTravelled);
             String providerName = loc.getProvider();
 
@@ -772,32 +769,33 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
 
                 float speed = loc.getSpeed();
                 String unit;
-                if (AppSettings.shouldUseImperial())
-                {
-                    if (speed > 1.47)
-                    {
-                        speed = speed * 0.6818f;
-                        unit = getString(R.string.miles_per_hour);
-
-                    }
-                    else
-                    {
-                        speed = Utilities.MetersToFeet(speed);
-                        unit = getString(R.string.feet_per_second);
-                    }
-                }
-                else
-                {
-                    if (speed > 0.277)
-                    {
-                        speed = speed * 3.6f;
-                        unit = getString(R.string.kilometers_per_hour);
-                    }
-                    else
-                    {
-                        unit = getString(R.string.meters_per_second);
-                    }
-                }
+                unit = getString(R.string.meters_per_second);
+//                if (AppSettings.shouldUseImperial())
+//                {
+//                    if (speed > 1.47)
+//                    {
+//                        speed = speed * 0.6818f;
+//                        unit = getString(R.string.miles_per_hour);
+//
+//                    }
+//                    else
+//                    {
+//                        speed = Utilities.MetersToFeet(speed);
+//                        unit = getString(R.string.feet_per_second);
+//                    }
+//                }
+//                else
+//                {
+//                    if (speed > 0.277)
+//                    {
+//                        speed = speed * 3.6f;
+//                        unit = getString(R.string.kilometers_per_hour);
+//                    }
+//                    else
+//                    {
+//                        
+//                    }
+//                }
 
                 txtSpeed.setText(String.valueOf(speed) + unit);
 
@@ -829,29 +827,7 @@ public class GpsMainActivity extends Activity implements OnCheckedChangeListener
                 Session.setSatelliteCount(0);
             }
 
-            if (loc.hasAccuracy())
-            {
-
-                float accuracy = loc.getAccuracy();
-
-                if (AppSettings.shouldUseImperial())
-                {
-                    txtAccuracy.setText(getString(R.string.accuracy_within,
-                            String.valueOf(Utilities.MetersToFeet(accuracy)), getString(R.string.feet)));
-
-                }
-                else
-                {
-                    txtAccuracy.setText(getString(R.string.accuracy_within, String.valueOf(accuracy),
-                            getString(R.string.meters)));
-                }
-
-            }
-            else
-            {
-                txtAccuracy.setText(R.string.not_applicable);
-            }
-
+           
 
             String distanceUnit;
             double distanceValue = Session.getTotalTravelled();

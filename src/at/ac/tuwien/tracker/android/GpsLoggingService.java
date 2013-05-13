@@ -745,9 +745,10 @@ public class GpsLoggingService extends Service implements IActionListener
 
         Utilities.LogInfo("New location obtained");
         ResetCurrentFileName(false);
-        Session.setLatestTimeStamp(System.currentTimeMillis());
+       
         Session.setCurrentLocationInfo(loc);
-        SetDistanceTraveled(loc);
+        Double distance = SetDistanceTraveled(loc);
+        SetSpeed(loc,distance,currentTimeStamp);
         Notify();
         WriteToFile(loc);
         GetPreferences();
@@ -760,10 +761,23 @@ public class GpsLoggingService extends Service implements IActionListener
         
         if(IsRaceActivityVisible()){
         	raceMainActivity.OnLocationUpdate(loc);
-        }
+        } 
+        Session.setLatestTimeStamp(System.currentTimeMillis());
     }
 
-    private void SetDistanceTraveled(Location loc)
+    private void SetSpeed(Location loc, double distance, double currentTimeStamp) {
+    	 if (Session.getPreviousLocationInfo() == null)
+         {
+             Session.setPreviousLocationInfo(loc);
+         }
+    	 
+    	 double temp = (currentTimeStamp -Session.getLatestTimeStamp())/1000;
+    	 double speed = distance/temp;
+    	 loc.setSpeed((float)speed);
+		
+	}
+
+	private double SetDistanceTraveled(Location loc)
     {
         // Distance
         if (Session.getPreviousLocationInfo() == null)
@@ -772,6 +786,11 @@ public class GpsLoggingService extends Service implements IActionListener
         }
         // Calculate this location and the previous location location and add to the current running total distance.
         // NOTE: Should be used in conjunction with 'distance required before logging' for more realistic values.
+        final float[] results= new float[3];
+        loc.distanceBetween(Session.getPreviousLatitude(),  Session.getPreviousLongitude(), loc.getLatitude(), loc.getLongitude(), results);
+        final float bearing = results[1];
+        loc.setBearing(bearing);
+        
         double distance = Utilities.CalculateDistance(
                 Session.getPreviousLatitude(),
                 Session.getPreviousLongitude(),
@@ -779,6 +798,7 @@ public class GpsLoggingService extends Service implements IActionListener
                 loc.getLongitude());
         Session.setPreviousLocationInfo(loc);
         Session.setTotalTravelled(Session.getTotalTravelled() + distance);
+        return results[0];
     }
 
     protected void StopManagerAndResetAlarm()
